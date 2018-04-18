@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Entity;
+namespace App\Entity;
 
 use Idk\LegoBundle\Annotation\Entity as Lego;
 use Doctrine\ORM\Mapping as ORM;
@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Article
  *
  * @ORM\Table(name="config")
- * @ORM\Entity(repositoryClass="AppBundle\Entity\ConfigRepository")
+ * @ORM\Entity(repositoryClass="App\Entity\ConfigRepository")
  */
 class Config
 {
@@ -130,7 +130,7 @@ class Config
      *
      * @Lego\Form\JsonForm()
      * @Lego\Field(label="Base JSON du produit")
-     * @ORM\Column(name="base", type="json_array")
+     * @ORM\Column(name="base", type="text")
      */
     private $base;
 

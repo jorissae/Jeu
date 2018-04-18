@@ -1,16 +1,15 @@
 <?php
 
-namespace AppBundle\Entity;
+namespace App\Entity;
 
 use Idk\LegoBundle\Annotation\Entity as Lego;
 use Doctrine\ORM\Mapping as ORM;
-use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Article
  *
  * @ORM\Table(name="projet")
- * @ORM\Entity(repositoryClass="AppBundle\Entity\ProjetRepository")
+ * @ORM\Entity(repositoryClass="App\Entity\ProjetRepository")
  */
 class Projet
 {
@@ -25,7 +24,7 @@ class Projet
 
     /**
      *
-     * @ORM\Column(name="data", type="json_array")
+     * @ORM\Column(name="data", type="text")
      */
     private $data;
 
@@ -49,7 +48,6 @@ class Projet
     /**
      * @var \DateTime
      *
-     * @Gedmo\Timestampable(on="create")
      * @Lego\Field(label="Date de création")
      * @ORM\Column(name="created_at", type="datetime",nullable=true)
      */
@@ -58,7 +56,6 @@ class Projet
     /**
      * @var \DateTime
      *
-     * @Gedmo\Timestampable(on="update")
      * @ORM\Column(name="updated_at", type="datetime", nullable=true)
      */
     private $updatedAt;

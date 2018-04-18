@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Form;
+namespace App\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -23,7 +23,7 @@ class EditeurType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Editeur'
+            'data_class' => 'App\Entity\Editeur'
         ));
     }
 
@@ -32,7 +32,7 @@ class EditeurType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'appbundle_editeur';
+        return 'app_editeur';
     }
 
 

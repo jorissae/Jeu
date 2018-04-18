@@ -1,8 +1,8 @@
 <?php
 
-namespace AppBundle\Controller;
+namespace App\Controller;
 
-use AppBundle\Configurator\JeuConfigurator as Configurator;
+use App\Configurator\Jeu2Configurator as Configurator;
 use Idk\LegoBundle\Controller\LegoController;
 use Idk\LegoBundle\Traits\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -10,9 +10,9 @@ use Symfony\Component\HttpFoundation\Response;
 
 /**
  * The admin list controller for Jeu
- * @Route("/jeu")
+ * @Route("/jeu2")
  */
-class JeuLegoController extends LegoController
+class Jeu2LegoController extends LegoController
 {
 
     use Controller;

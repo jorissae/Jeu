@@ -1,17 +1,17 @@
 <?php
 
-namespace AppBundle\Controller;
+namespace App\Controller;
 
-use AppBundle\Configurator\StepConfigurator as Configurator;
+use App\Configurator\VariableConfigurator as Configurator;
 use Idk\LegoBundle\Controller\LegoController;
 use Idk\LegoBundle\Traits\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 /**
  * The admin list controller for Jeu
- * @Route("/step")
+ * @Route("/variable")
  */
-class StepLegoController extends LegoController
+class VariableLegoController extends LegoController
 {
 
     use Controller;

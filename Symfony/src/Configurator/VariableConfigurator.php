@@ -1,8 +1,8 @@
 <?php
 
-namespace AppBundle\Configurator;
+namespace App\Configurator;
 
-use AppBundle\Entity\Variable;
+use App\Entity\Variable;
 use Idk\LegoBundle\Configurator\AbstractDoctrineORMConfigurator;
 use Idk\LegoBundle\Component as CPNT;
 

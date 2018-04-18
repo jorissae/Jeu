@@ -1,21 +1,21 @@
 <?php
 
-namespace AppBundle\Controller;
+namespace App\Controller;
 
-use AppBundle\Configurator\VariableConfigurator as Configurator;
+use App\Configurator\EditeurConfigurator as Configurator;
 use Idk\LegoBundle\Controller\LegoController;
 use Idk\LegoBundle\Traits\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 /**
  * The admin list controller for Jeu
- * @Route("/variable")
+ * @Route("/editeur")
  */
-class VariableLegoController extends LegoController
+class EditeurLegoController extends LegoController
 {
 
     use Controller;
-    const LEGO_CONFIGURATOR = Configurator::class;
 
+    const LEGO_CONFIGURATOR = Configurator::class;
 
 }

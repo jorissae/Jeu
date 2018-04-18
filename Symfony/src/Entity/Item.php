@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Entity;
+namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
@@ -11,7 +11,7 @@ use Idk\LegoBundle\Annotation\Entity as Lego;
  *
  * @ORM\Table(name="item")
  * @Lego\EntityExport(fields={"var","code","libelle", "sublibelle","aide", "color", "vignette", "condition","visuel","prix","prix2", "url"})
- * @ORM\Entity(repositoryClass="AppBundle\Entity\ItemRepository")
+ * @ORM\Entity(repositoryClass="App\Entity\ItemRepository")
  */
 class Item
 {

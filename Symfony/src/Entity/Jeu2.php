@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Entity;
+namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Idk\LegoBundle\Annotation\Entity as Lego;
@@ -9,10 +9,10 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Jeu
  *
- * @ORM\Table(name="jeu")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\JeuRepository")
+ * @ORM\Table(name="jeu2")
+ * @ORM\Entity(repositoryClass="App\Repository\Jeu2Repository")
  */
-class Jeu
+class Jeu2
 {
     /**
      * @var int
@@ -20,7 +20,7 @@ class Jeu
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
-     * @Lego\Field(path="show", twig="jeu_{{ value }}")
+     * @Lego\Field(label="Id", path="show", twig="jeu_{{ value }}")
      */
     private $id;
 
@@ -39,8 +39,8 @@ class Jeu
      *
      * @ORM\Column(name="nbPlayer", type="integer")
      * @Assert\NotBlank()
-     * @Lego\Field(label="Nombre de joueur")
-     * @Lego\Filter\NumberRangeFilter(label="Nombre de joueur")
+     * @Lego\Field(label="Nombre de joueurs")
+     * @Lego\Filter\NumberRangeFilter()
      */
     private $nbPlayer;
 
@@ -49,6 +49,7 @@ class Jeu
      *
      * @ORM\Column(name="age", type="integer")
      * @Assert\NotBlank()
+     * @Lego\Field(label="Age")
      * @Lego\Filter\NumberRangeFilter()
      */
     private $age;
@@ -167,11 +168,11 @@ class Jeu
     /**
      * Set editeur
      *
-     * @param \AppBundle\Entity\Editeur $editeur
+     * @param \App\Entity\Editeur $editeur
      *
      * @return Jeu
      */
-    public function setEditeur(\AppBundle\Entity\Editeur $editeur = null)
+    public function setEditeur(\App\Entity\Editeur $editeur = null)
     {
         $this->editeur = $editeur;
 
@@ -181,7 +182,7 @@ class Jeu
     /**
      * Get editeur
      *
-     * @return \AppBundle\Entity\Editeur
+     * @return \App\Entity\Editeur
      */
     public function getEditeur()
     {

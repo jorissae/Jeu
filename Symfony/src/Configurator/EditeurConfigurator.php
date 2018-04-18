@@ -1,9 +1,9 @@
 <?php
 
-namespace AppBundle\Configurator;
+namespace App\Configurator;
 
-use AppBundle\Entity\Editeur;
-use AppBundle\Form\EditeurType;
+use App\Entity\Editeur;
+use App\Form\EditeurType;
 
 use Idk\LegoBundle\Configurator\AbstractDoctrineORMConfigurator;
 use Idk\LegoBundle\Component as CPNT;
@@ -15,7 +15,7 @@ class EditeurConfigurator extends AbstractDoctrineORMConfigurator
 {
 
     const ENTITY_CLASS_NAME = Editeur::class;
-    const TITLE = 'Gestion des editeurs';
+    const TITLE = 'Gestion des éditeurs';
 
     public function buildAll(){
 

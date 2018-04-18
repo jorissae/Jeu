@@ -1,8 +1,8 @@
 <?php
 
-namespace AppBundle\Controller;
+namespace App\Controller;
 
-use AppBundle\Configurator\UserConfigurator as Configurator;
+use App\Configurator\UserConfigurator as Configurator;
 use Idk\LegoBundle\Controller\LegoController;
 use Idk\LegoBundle\Traits\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;

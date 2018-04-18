@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Entity;
+namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Idk\LegoBundle\Annotation\Entity as Lego;
@@ -9,7 +9,7 @@ use Idk\LegoBundle\Annotation\Entity as Lego;
  *
  * @Lego\EntityForm(fields={"step","var","label", "intro", "subIntro", "type","html", "aideHtml", "img"})
  * @ORM\Table(name="variable")
- * @ORM\Entity(repositoryClass="AppBundle\Entity\VariableRepository")
+ * @ORM\Entity(repositoryClass="App\Entity\VariableRepository")
  */
 class Variable
 {

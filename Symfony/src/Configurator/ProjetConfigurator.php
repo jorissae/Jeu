@@ -1,8 +1,8 @@
 <?php
 
-namespace AppBundle\Configurator;
+namespace App\Configurator;
 
-use AppBundle\Entity\Projet;
+use App\Entity\Projet;
 use Idk\LegoBundle\Configurator\AbstractDoctrineORMConfigurator;
 use Idk\LegoBundle\Component as CPNT;
 
@@ -26,7 +26,7 @@ class ProjetConfigurator extends AbstractDoctrineORMConfigurator
 
         $this->addShowComponent(CPNT\Action::class, ['actions' => [CPNT\Action::BACK]]);
         $this->addShowComponent(CPNT\Item::class, []);
-        $this->addShowComponent(CPNT\Custom::class, ['src' => 'AppBundle:ProjetLego:showJson']);
+        $this->addShowComponent(CPNT\Custom::class, ['src' => 'App:ProjetLego:showJson']);
     }
 
     public function getControllerPath()

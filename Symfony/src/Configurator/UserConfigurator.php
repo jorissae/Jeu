@@ -1,18 +1,17 @@
 <?php
 
-namespace AppBundle\Configurator;
+namespace App\Configurator;
 
 use Doctrine\ORM\EntityManager;
 
-use AppBundle\Form\UserAdminType;
-use Idk\LegoBundle\AdminList\FilterType\ORM;
-use Idk\LegoBundle\AdminList\Configurator\AbstractDoctrineORMAdminListConfigurator;
+use App\Form\UserAdminType;
+use Idk\LegoBundle\Configurator\AbstractDoctrineORMConfigurator;
 use Doctrine\ORM\QueryBuilder;
 
 /**
  * The admin list configurator for User
  */
-class UserConfigurator extends AbstractDoctrineORMAdminListConfigurator
+class UserConfigurator extends AbstractDoctrineORMConfigurator
 {
     /**
      * @param EntityManager $em        The entity manager
@@ -82,7 +81,7 @@ class UserConfigurator extends AbstractDoctrineORMAdminListConfigurator
      */
     public function getBundleName()
     {
-        return 'AppBundle';
+        return 'App';
     }
 
     /**

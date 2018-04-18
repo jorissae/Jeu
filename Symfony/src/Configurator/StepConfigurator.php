@@ -1,8 +1,8 @@
 <?php
 
-namespace AppBundle\Configurator;
+namespace App\Configurator;
 
-use AppBundle\Entity\Step;
+use App\Entity\Step;
 use Idk\LegoBundle\Configurator\AbstractDoctrineORMConfigurator;
 use Idk\LegoBundle\Component as CPNT;
 use Idk\LegoBundle\Lib\Actions\ListAction;

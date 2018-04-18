@@ -36,7 +36,7 @@ class JeuConfigurator extends AbstractDoctrineORMConfigurator
 
     public function getTitle()
     {
-        return 'Gestion des jeu';
+        return 'Gestion des jeux';
     }
 
     public function getControllerPath()

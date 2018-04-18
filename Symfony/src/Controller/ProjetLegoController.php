@@ -1,8 +1,8 @@
 <?php
 
-namespace AppBundle\Controller;
+namespace App\Controller;
 
-use AppBundle\Configurator\ProjetConfigurator as Configurator;
+use App\Configurator\ProjetConfigurator as Configurator;
 use Idk\LegoBundle\Controller\LegoController;
 use Idk\LegoBundle\Traits\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -19,10 +19,10 @@ class ProjetLegoController extends LegoController
 
     public function showJsonAction($component){
         $request = $component->getRequest();
-        /* @var \AppBundle\Entity\Projet $entity */
+        /* @var \App\Entity\Projet $entity */
         $entity = $component->getConfigurator()->find($request->get('id'));
         $projet = $entity->getData();
-        return $this->render('AppBundle:Projet:_show_json.html.twig', ['entity' => $entity, 'projet' => $projet]);
+        return $this->render('App:Projet:_show_json.html.twig', ['entity' => $entity, 'projet' => $projet]);
     }
 
 }

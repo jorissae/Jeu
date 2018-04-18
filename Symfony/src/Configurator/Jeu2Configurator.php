@@ -1,9 +1,9 @@
 <?php
 
-namespace AppBundle\Configurator;
+namespace App\Configurator;
 
-use AppBundle\Entity\Jeu;
-use AppBundle\Form\JeuType;
+use App\Entity\Jeu2;
+use App\Form\Jeu2Type;
 
 use Idk\LegoBundle\Lib\Actions\BulkAction;
 use Idk\LegoBundle\Configurator\AbstractDoctrineORMConfigurator;
@@ -12,17 +12,17 @@ use Idk\LegoBundle\Component as CPNT;
 /**
  * The admin list configurator for Jeu
  */
-class JeuConfigurator extends AbstractDoctrineORMConfigurator
+class Jeu2Configurator extends AbstractDoctrineORMConfigurator
 {
 
-    const ENTITY_CLASS_NAME = Jeu::class;
+    const ENTITY_CLASS_NAME = Jeu2::class;
     const TITLE = 'Gestion des jeux';
 
     public function buildAll(){
 
         //Index
         $this->addIndexComponent(CPNT\Action::class,['actions'=>[CPNT\Action::ADD, CPNT\Action::EXPORT_CSV, CPNT\Action::EXPORT_XLSX, CPNT\Action::ORDER_COMPONENTS_RESET]]);
-        $this->addIndexComponent(CPNT\Custom::class, ['src'=>'AppBundle:JeuLego:loulou']);
+        $this->addIndexComponent(CPNT\Custom::class, ['src'=>'App\\Controller\\Jeu2LegoController::loulouAction']);
         $this->addIndexComponent(CPNT\Filter::class,[]);
         $showItem = $this->addIndexComponent(CPNT\Item::class,['fields'=> ['editeur' ,'name', 'nbPlayer', 'age']]);
         $showItem->add('editeur.id', ['label'=>'Id editeur']);
@@ -47,11 +47,11 @@ class JeuConfigurator extends AbstractDoctrineORMConfigurator
 
         //Add
         $this->addAddComponent(CPNT\Action::class,['actions'=> [CPNT\Action::BACK]]);
-        $this->addAddComponent(CPNT\Form::class, ['form' => JeuType::class]);
+        $this->addAddComponent(CPNT\Form::class, ['form' => Jeu2Type::class]);
 
         //Edit
         $this->addEditComponent(CPNT\Action::class,['actions'=> [CPNT\Action::BACK]]);
-        $this->addEditComponent(CPNT\Form::class, ['form' => JeuType::class]);
+        $this->addEditComponent(CPNT\Form::class, ['form' => Jeu2Type::class]);
 
         //Show
         $this->addShowComponent(CPNT\Action::class,['actions'=> [CPNT\Action::BACK]]);
@@ -65,6 +65,6 @@ class JeuConfigurator extends AbstractDoctrineORMConfigurator
 
     public function getControllerPath()
     {
-        return 'app_jeulego';
+        return 'app_jeu2lego';
     }
 }

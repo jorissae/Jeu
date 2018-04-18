@@ -35,7 +35,7 @@ class Jeu
      * @var int
      *
      * @ORM\Column(name="nbPlayer", type="integer")
-     * @Lego\Field(label="Nombre de joueur")
+     * @Lego\Field(label="Nombre de joueurs")
      * @Lego\Filter\NumberRangeFilter()
      */
     private $nbPlayer;

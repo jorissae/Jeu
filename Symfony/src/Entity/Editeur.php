@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Entity;
+namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Idk\LegoBundle\Annotation\Entity as Lego;
@@ -10,7 +10,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * Jeu
  *
  * @ORM\Table(name="editeur")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\EditeurRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\EditeurRepository")
  */
 class Editeur
 {
@@ -91,11 +91,11 @@ class Editeur
     /**
      * Add jeux
      *
-     * @param \AppBundle\Entity\Jeu $jeux
+     * @param \App\Entity\Jeu $jeux
      *
      * @return Editeur
      */
-    public function addJeux(\AppBundle\Entity\Jeu $jeux)
+    public function addJeux(\App\Entity\Jeu $jeux)
     {
         $this->jeux[] = $jeux;
 
@@ -105,9 +105,9 @@ class Editeur
     /**
      * Remove jeux
      *
-     * @param \AppBundle\Entity\Jeu $jeux
+     * @param \App\Entity\Jeu $jeux
      */
-    public function removeJeux(\AppBundle\Entity\Jeu $jeux)
+    public function removeJeux(\App\Entity\Jeu $jeux)
     {
         $this->jeux->removeElement($jeux);
     }

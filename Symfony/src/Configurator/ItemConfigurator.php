@@ -1,8 +1,8 @@
 <?php
 
-namespace AppBundle\Configurator;
+namespace App\Configurator;
 
-use AppBundle\Entity\Item;
+use App\Entity\Item;
 use Idk\LegoBundle\Configurator\AbstractDoctrineORMConfigurator;
 use Idk\LegoBundle\Component as CPNT;
 use Idk\LegoBundle\FilterType\ORM\NumberFilterType;
@@ -18,7 +18,7 @@ class ItemConfigurator extends AbstractDoctrineORMConfigurator
 
     public function buildAll(){
         $this->addIndexComponent(CPNT\Action::class,['actions' => [CPNT\Action::EXPORT_XLSX, new ListAction('Fichier Zip', ['route'=>'app_itemlego_exportzip'])]]);
-        $this->addIndexComponent(CPNT\Custom::class, ['src' => 'AppBundle:ItemLego:uploadcsv']);
+        $this->addIndexComponent(CPNT\Custom::class, ['src' => 'App:ItemLego:uploadcsv']);
         $this->addIndexComponent(CPNT\Filter::class,[]);
         $list = $this->addIndexComponent(CPNT\ListItems::class,  [
             'can_modify_nb_entity_per_page' => true,
