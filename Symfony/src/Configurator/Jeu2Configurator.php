@@ -47,11 +47,11 @@ class Jeu2Configurator extends AbstractDoctrineORMConfigurator
 
         //Add
         $this->addAddComponent(CPNT\Action::class,['actions'=> [CPNT\Action::BACK]]);
-        $this->addAddComponent(CPNT\Form::class, ['form' => Jeu2Type::class]);
+        $this->addAddComponent(CPNT\Form::class, []);
 
         //Edit
         $this->addEditComponent(CPNT\Action::class,['actions'=> [CPNT\Action::BACK]]);
-        $this->addEditComponent(CPNT\Form::class, ['form' => Jeu2Type::class]);
+        $this->addEditComponent(CPNT\Form::class, []);
 
         //Show
         $this->addShowComponent(CPNT\Action::class,['actions'=> [CPNT\Action::BACK]]);

@@ -11,6 +11,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @ORM\Table(name="jeu2")
  * @ORM\Entity(repositoryClass="App\Repository\Jeu2Repository")
+ * @Lego\EntityForm(fields={"name","nbPlayer","age","image","editeur","createdAt"})
  */
 class Jeu2
 {
@@ -20,7 +21,7 @@ class Jeu2
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
-     * @Lego\Field(label="Id", path="show", twig="jeu_{{ value }}")
+     * @Lego\Field(label="Id", path="show", twig="jeu_{{ view.value }}")
      */
     private $id;
 
@@ -57,7 +58,8 @@ class Jeu2
     /**
      * @var int
      *
-     * @Lego\File(directory="web/uploads/jeu")
+     * @Lego\File(directory="public/uploads/jeu")
+     * @Lego\Form\FileForm()
      * @Lego\Field(label="Image", image={"directory":"/uploads/jeu","width":"50px"})
      * @ORM\Column(name="image", type="string")
      */
@@ -67,6 +69,7 @@ class Jeu2
      * @var int
      *
      * @Lego\Field(label="Date de création")
+     * @Lego\Form\DateForm()
      * @ORM\Column(name="created_at", type="datetime", nullable=true)
      */
     private $createdAt;

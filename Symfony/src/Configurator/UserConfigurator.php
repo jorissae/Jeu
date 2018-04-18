@@ -1,112 +1,38 @@
 <?php
-
 namespace App\Configurator;
 
-use Doctrine\ORM\EntityManager;
-
-use App\Form\UserAdminType;
+use App\Entity\User;
 use Idk\LegoBundle\Configurator\AbstractDoctrineORMConfigurator;
-use Doctrine\ORM\QueryBuilder;
-
+use Idk\LegoBundle\Component as CPNT;
 /**
- * The admin list configurator for User
- */
+ * The LEGO configurator for User */
 class UserConfigurator extends AbstractDoctrineORMConfigurator
 {
-    /**
-     * @param EntityManager $em        The entity manager
-     * @param AclHelper     $aclHelper The acl helper
-     */
-    public function __construct($container)
+
+    const ENTITY_CLASS_NAME = User::class;
+    const TITLE = 'Gestion des users';
+
+    public function buildIndex()
     {
-        parent::__construct($container);
-        $this->setAdminType(new UserAdminType());
-        /* 
-        Ne pas utilisé de fonction 'add*' ici
-        Use:
-            buildFilters()
-            buildFields()
-            buildExportFields()
-            showFields()
-            showSubLists()
-            showOnglets()
-            editFormFields()
-            newFormFields()
-            formFields()
-            buildItemActions()
-            buildListActions()
-            buildBulkActions()
-            buildRupteurs()
-            buildHtml()
-        */
+        $this->addIndexComponent(CPNT\Action::class, ['actions' => [CPNT\Action::ADD]]);
+        $this->addIndexComponent(CPNT\Filter::class, []);
+        $this->addIndexComponent(CPNT\ListItems::class, [
+            'entity_actions' => [CPNT\ListItems::ENTITY_ACTION_EDIT, CPNT\ListItems::ENTITY_ACTION_DELETE],
+            'bulk_actions' => [CPNT\ListItems::BULK_ACTION_DELETE]
+        ]);
+
+        $this->addAddComponent(CPNT\Action::class, ['actions' => [CPNT\Action::BACK]]);
+        $this->addAddComponent(CPNT\Form::class, []);
+
+        $this->addEditComponent(CPNT\Action::class, ['actions' => [CPNT\Action::BACK]]);
+        $this->addEditComponent(CPNT\Form::class, []);
+
+        $this->addShowComponent(CPNT\Action::class, ['actions' => [CPNT\Action::BACK]]);
+        $this->addShowComponent(CPNT\Item::class, []);
     }
 
-    /**
-     * Configure the visible columns
-     */
-    public function buildFields()
+    public function getControllerPath()
     {
-        $this->addField('username');
+        return 'app_userlego';
     }
-
-
-
-        /**
-     * Configure the visible field in show
-     */
-    public function showFields()
-    {
-        $this->addShowGroup(6); //groupe de 6 colonnes (col-md-6)
-    }
-
-
-        /**
-     * Configure the ordrer and group of form
-     */
-    public function formFields()
-    {
-    }
-
-    /**
-     * Build filters for admin list
-     */
-    public function buildFilters()
-    {
-    }
-
-    /**
-     * Get bundle name
-     *
-     * @return string
-     */
-    public function getBundleName()
-    {
-        return 'App';
-    }
-
-    /**
-     * Get entity name
-     *
-     * @return string
-     */
-    public function getEntityName()
-    {
-        return 'User';
-    }
-
-    /**
-     * Get title
-     *
-     * @return string
-     */
-    public function getTitle()
-    {
-        return 'Gestion des user';
-    }
-
-    /* //avec variable template = 'show|list|add|edit'
-    public function getScriptTemplate(){
-      return 'AppBundle:User:_script.html.twig';
-    }
-    */
 }
