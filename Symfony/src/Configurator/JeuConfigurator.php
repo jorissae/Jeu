@@ -38,4 +38,9 @@ class JeuConfigurator extends AbstractDoctrineORMConfigurator
     {
         return 'Gestion des jeux';
     }
+
+    public function getControllerPath()
+    {
+        return 'app_jeulego';
+    }
 }

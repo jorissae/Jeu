@@ -1,12 +1,13 @@
 index:
-    path: /
+    path: /admin
     controller: App\Controller\DefaultController::index
 
 lego:
     # this is just an example; update the value of 'resource' accordingly
     resource: 'Idk\LegoBundle\Controller\SecurityController'
     type:     annotation
-    prefix:   /
+    prefix:   /admin
 
 lego2:
     resource: "@IdkLegoBundle/Resources/config/routing/routes.yml"
+    prefix: /admin
