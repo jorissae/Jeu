@@ -7,3 +7,6 @@ lego:
     resource: 'Idk\LegoBundle\Controller\SecurityController'
     type:     annotation
     prefix:   /
+
+lego2:
+    resource: "@IdkLegoBundle/Resources/config/routing/routes.yml"

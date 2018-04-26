@@ -12,6 +12,8 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Table(name="jeu2")
  * @ORM\Entity(repositoryClass="App\Repository\Jeu2Repository")
  * @Lego\EntityForm(fields={"name","nbPlayer","age","image","editeur","createdAt"})
+ * @Lego\EntityExport(fields={"name"})
+ * @Lego\Entity(name="jeu2")
  */
 class Jeu2
 {

@@ -17,7 +17,7 @@ class JeuConfigurator extends AbstractDoctrineORMConfigurator
     public function buildIndex(){
        //tester sans addAddComponent
        //tester avec id annoter de lego/field
-        $this->addIndexComponent(CPNT\Action::class, ['actions' => [CPNT\Action::ADD]]);
+        $this->addIndexComponent(CPNT\Action::class, ['actions' => [CPNT\Action::ADD, CPNT\Action::EXPORT_CSV, CPNT\Action::EXPORT_XLSX]]);
         $this->addIndexComponent(CPNT\Filter::class,[]);
         $this->addIndexComponent(CPNT\ListItems::class,  ['columns'=> ['name', 'nbPlayer', 'age']]);
 
@@ -37,10 +37,5 @@ class JeuConfigurator extends AbstractDoctrineORMConfigurator
     public function getTitle()
     {
         return 'Gestion des jeux';
-    }
-
-    public function getControllerPath()
-    {
-        return 'app_jeulego';
     }
 }

@@ -8,6 +8,7 @@ use Idk\LegoBundle\Annotation\Entity as Lego;
 /**
  * Jeu
  *
+ * @Lego\Entity(config="App\Configurator\JeuConfigurator")
  * @ORM\Table(name="jeu")
  * @ORM\Entity(repositoryClass="App\Repository\JeuRepository")
  */
