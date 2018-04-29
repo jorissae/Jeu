@@ -43,6 +43,6 @@ class EditeurConfigurator extends AbstractDoctrineORMConfigurator
 
     public function getControllerPath()
     {
-        return 'app_editeurlego';
+        return 'app_backend_editeurlego';
     }
 }

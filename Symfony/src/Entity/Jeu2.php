@@ -33,7 +33,7 @@ class Jeu2
      *
      * @ORM\Column(name="name", type="string", length=255)
      * @Assert\NotBlank()
-     * @Lego\Field(label="Nom", edit_in_place=true, path={"route":"app_jeulego_show", "params"={"id":"id"}})
+     * @Lego\Field(label="Nom", edit_in_place=true, path={"route":"app_backend_jeulego_show", "params"={"id":"id"}})
      * @Lego\Filter\StringFilter()
      */
     private $name;
@@ -81,7 +81,7 @@ class Jeu2
      * @var Editeur
      *
      * @ORM\ManyToOne(targetEntity="Editeur")
-     * @Lego\Field(label="Editeur",  path={"route":"app_editeurlego_show", "params"={"id":"editeur.id"}})
+     * @Lego\Field(label="Editeur",  path={"route":"app_backend_editeurlego_show", "params"={"id":"editeur.id"}})
      * @ORM\JoinColumn(name="editeur_id", referencedColumnName="id")
      */
     private $editeur;

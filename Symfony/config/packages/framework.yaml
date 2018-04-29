@@ -35,4 +35,4 @@ framework:
         engines: ['twig']
 idk_lego:
     skin: skin-blue
-    layout: lego.html.twig
+    layout: Backend/lego.html.twig

@@ -37,7 +37,7 @@ class Menu implements LegoMenuInterface
             'labels'=> [new LabelItem(5, ['css_class'=>'bg-red'])],
             'children' => [new MenuItem('index',['route'=>'homepage', 'icon'=>'circle-o'])]
         ]);
-        $return[] = new MenuItem('Jeux', ['route'=>'app_jeulego_index', 'icon'=>'play']);
+        $return[] = new MenuItem('Jeux', ['route'=>'app_backend_jeulego_index', 'icon'=>'play']);
         return $return;
     }
 

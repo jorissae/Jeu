@@ -27,6 +27,6 @@ class VariableConfigurator extends AbstractDoctrineORMConfigurator
 
     public function getControllerPath()
     {
-        return 'app_variablelego';
+        return 'app_backend_variablelego';
     }
 }

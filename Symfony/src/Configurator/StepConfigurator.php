@@ -28,6 +28,6 @@ class StepConfigurator extends AbstractDoctrineORMConfigurator
 
     public function getControllerPath()
     {
-        return 'app_steplego';
+        return 'app_backend_steplego';
     }
 }

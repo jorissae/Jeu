@@ -31,6 +31,6 @@ class ProjetConfigurator extends AbstractDoctrineORMConfigurator
 
     public function getControllerPath()
     {
-        return 'app_projetlego';
+        return 'app_backend_projetlego';
     }
 }

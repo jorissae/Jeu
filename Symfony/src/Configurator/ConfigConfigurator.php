@@ -35,6 +35,6 @@ class ConfigConfigurator extends AbstractDoctrineORMConfigurator
 
     public function getControllerPath()
     {
-        return 'app_configlego';
+        return 'app_backend_configlego';
     }
 }

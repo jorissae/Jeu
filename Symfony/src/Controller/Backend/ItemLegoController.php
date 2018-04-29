@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Backend;
 
 use App\Configurator\ItemConfigurator as Configurator;
 use Idk\LegoBundle\Controller\LegoController;

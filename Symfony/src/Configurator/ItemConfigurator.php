@@ -37,6 +37,6 @@ class ItemConfigurator extends AbstractDoctrineORMConfigurator
 
     public function getControllerPath()
     {
-        return 'app_itemlego';
+        return 'app_backend_itemlego';
     }
 }

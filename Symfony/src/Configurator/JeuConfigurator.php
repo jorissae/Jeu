@@ -41,6 +41,6 @@ class JeuConfigurator extends AbstractDoctrineORMConfigurator
 
     public function getControllerPath()
     {
-        return 'app_jeulego';
+        return 'app_backend_jeulego';
     }
 }

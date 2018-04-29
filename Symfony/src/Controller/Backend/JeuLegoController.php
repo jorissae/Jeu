@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Backend;
 
 use App\Configurator\JeuConfigurator as Configurator;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;

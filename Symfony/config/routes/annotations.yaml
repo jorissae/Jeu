@@ -1,10 +1,10 @@
-controllers:
-    resource: ../../src/Controller/
+controllers_backend:
+    resource: ../../src/Controller/Backend/
     type: annotation
     prefix: /admin
 
 
-controllersFront:
-    resource: ../../src/ControllerFront/
+controllers_frontend:
+    resource: ../../src/Controller/Frontend/
     type: annotation
     prefix: /

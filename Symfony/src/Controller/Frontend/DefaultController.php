@@ -1,5 +1,5 @@
 <?php
-namespace App\ControllerFront;
+namespace App\Controller\Frontend;
 
 use Idk\LegoBundle\Service\Tag\ComponentChain;
 use Idk\LegoBundle\Service\Tag\WidgetChain;
@@ -16,7 +16,6 @@ class DefaultController extends Controller{
      */
     public function index(Request $request)
     {
-        return new Response('ok');
-        //return $this->render('Default/dashboard.html.twig', []);
+        return $this->render('Frontend/Default/homepage.html.twig', []);
     }
 }
