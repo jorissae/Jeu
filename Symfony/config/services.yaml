@@ -27,6 +27,6 @@ services:
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
 
-    Idk\LegoBundle\Service\LegoMenuInterface: '@App\Service\Menu'
+    #Idk\LegoBundle\Service\LegoMenuInterface: '@App\Service\Menu'
     Idk\LegoBundle\Service\LegoHeaderInterface: '@App\Service\Header'
     Idk\LegoBundle\Service\LegoFooterInterface: '@App\Service\Footer'

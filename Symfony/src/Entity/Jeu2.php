@@ -10,6 +10,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * Jeu
  *
  * @ORM\Table(name="jeu2")
+ * @Lego\Entity(config="App\Configurator\Jeu2Configurator",icon="play")
  * @ORM\Entity(repositoryClass="App\Repository\Jeu2Repository")
  * @Lego\EntityForm(fields={"name","nbPlayer","age","image","editeur","createdAt"})
  * @Lego\EntityExport(fields={"name"})
