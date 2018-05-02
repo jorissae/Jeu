@@ -99,7 +99,13 @@
         "version": "1.8.1"
     },
     "prestigejo/legobundle": {
-        "version": "dev-master"
+        "version": "0.2",
+        "recipe": {
+            "repo": "github.com/prestigejo/flex",
+            "branch": "master",
+            "version": "0.2",
+            "ref": "2154ec527605366876922fbc5c95365fa27f841d"
+        }
     },
     "psr/cache": {
         "version": "1.0.1"
@@ -324,7 +330,7 @@
         }
     },
     "symfony/templating": {
-        "version": "v4.0.6"
+        "version": "v4.0.9"
     },
     "symfony/translation": {
         "version": "3.3",

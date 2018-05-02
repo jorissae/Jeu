@@ -33,6 +33,3 @@ framework:
         fallbacks: ['fr']
     templating:
         engines: ['twig']
-idk_lego:
-    skin: skin-blue
-    layout: Backend/lego.html.twig

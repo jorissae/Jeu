@@ -3,9 +3,14 @@
 {% block page_title %}Dashboard{% endblock %}
 {% block page_subtitle %}{% endblock %}
 
+{% import 'IdkLegoBundle:Macro:macros.html.twig' as lego %}
 
 {% block content %}
+    <div class="jsa-widget-container">
     {%  for widget in widgets %}
         {% include widget.template with widget.params %}
     {%  endfor %}
+    </div>
+    <hr/>
+    {{ lego.box() }}
 {% endblock %}

@@ -10,11 +10,34 @@
 <section id="content-section9" class="content-section9">
     <div class="container">
         <div class="row">
-            {% block body %}{% endblock %}
+            <div class="all-body">
+                <nav role="navigation" class="navbar navbar-default margin-top-20">
+
+                    <div id="navbar-collapse-02" class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav">
+                            <li><a href=""><i class="fa fa-cubes"></i>&nbsp;Jeux</a></li>
+                            <li><a href=""><i class="fa fa-play"></i>&nbsp;Editeur</a></li>
+                            <li><a href=""><i class="fa fa-file"></i>&nbsp;Type</a></li>
+                        </ul>
+                    </div><!-- navbar-collapse -->
+                </nav>
+                <div class="col-md-9">
+                    <div class="body">
+                        {% block body %}{% endblock %}
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="right-bar">
+                        {% block rightbar %}Hello guy{% endblock %}
+                    </div>
+                </div>
+                <div style="clear:both;"></div>
+            </div>
         </div><!-- end row -->
     </div><!-- end container -->
-</section>
 
+</section>
+{% include 'Frontend/footer.html.twig' %}
 <script src="{{ asset('build/js/frontend.js') }}"></script>
 </body>
 </html>

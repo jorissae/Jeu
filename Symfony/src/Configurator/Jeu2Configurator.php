@@ -22,9 +22,9 @@ class Jeu2Configurator extends AbstractDoctrineORMConfigurator
     public function buildAll(){
 
         //Index
-        $this->addIndexComponent(CPNT\Action::class,['actions'=>[CPNT\Action::ADD, CPNT\Action::EXPORT_CSV, CPNT\Action::EXPORT_XLSX, CPNT\Action::ORDER_COMPONENTS_RESET]]);
-        $this->addIndexComponent(CPNT\Custom::class, ['src'=>Jeu2LegoController::class.'::loulouAction']);
-        $this->addIndexComponent(CPNT\Filter::class,[]);
+        $this->addIndexComponent(CPNT\Action::class,['movable'=>true,'actions'=>[CPNT\Action::ADD, CPNT\Action::EXPORT_CSV, CPNT\Action::EXPORT_XLSX, CPNT\Action::ORDER_COMPONENTS_RESET]]);
+        $this->addIndexComponent(CPNT\Custom::class, ['movable'=>true,'src'=>Jeu2LegoController::class.'::loulouAction']);
+        $this->addIndexComponent(CPNT\Filter::class,['movable'=>true]);
         $showItem = $this->addIndexComponent(CPNT\Item::class,['fields'=> ['editeur' ,'name', 'nbPlayer', 'age']]);
         $showItem->add('editeur.id', ['label'=>'Id editeur']);
         $list = $this->addIndexComponent(CPNT\ListItems::class,  [
