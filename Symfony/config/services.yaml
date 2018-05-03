@@ -31,3 +31,7 @@ services:
     #Idk\LegoBundle\Service\LegoMenuInterface: '@App\Service\Menu'
     Idk\LegoBundle\Service\LegoHeaderInterface: '@App\Service\Header'
     Idk\LegoBundle\Service\LegoFooterInterface: '@App\Service\Footer'
+
+    App\Listener\MoveComponents:
+        tags:
+            - { name: kernel.event_listener, event: idk.lego.move_components, method: update }

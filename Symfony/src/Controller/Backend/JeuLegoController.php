@@ -14,7 +14,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 class JeuLegoController extends Controller
 {
 
-    use TController;
+    use \Idk\LegoBundle\Traits\Controller;
 
     const LEGO_CONFIGURATOR = Configurator::class;
 
