@@ -6,11 +6,7 @@
 {% import 'IdkLegoBundle:Macro:macros.html.twig' as lego %}
 
 {% block content %}
-    <div class="jsa-widget-container">
-    {%  for widget in widgets %}
-        {% include widget.template with widget.params %}
-    {%  endfor %}
-    </div>
+    {{ render_use_widgets() }}
     <hr/>
     {{ lego.box() }}
 {% endblock %}
