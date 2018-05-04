@@ -32,6 +32,7 @@ services:
     Idk\LegoBundle\Service\LegoHeaderInterface: '@App\Service\Header'
     Idk\LegoBundle\Service\LegoFooterInterface: '@App\Service\Footer'
 
-    App\Listener\MoveComponents:
+    App\Listener\MoveLegoElements:
         tags:
-            - { name: kernel.event_listener, event: idk.lego.move_components, method: update }
+            - { name: kernel.event_listener, event: idk.lego.move_components, method: updateComponents }
+            - { name: kernel.event_listener, event: idk.lego.move_widgets, method: updateWidgets }

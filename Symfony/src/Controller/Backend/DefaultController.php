@@ -13,8 +13,8 @@ class DefaultController extends Controller{
     /**
      * @Route("/", name="lego_homepage")
      */
-    public function index(WidgetChain $widgetChain, ComponentChain $componentChain)
+    public function index()
     {
-        return $this->render('Backend/Default/dashboard.html.twig', ['widgets'=>$widgetChain->getWidgets()]);
+        return $this->render('Backend/Default/dashboard.html.twig');
     }
 }
