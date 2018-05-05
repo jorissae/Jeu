@@ -3,8 +3,8 @@
 namespace App\Controller\Backend;
 
 use App\Configurator\Jeu2Configurator as Configurator;
-use Idk\LegoBundle\Controller\LegoController;
-use Idk\LegoBundle\Traits\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Idk\LegoBundle\Traits\ControllerTrait;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -12,10 +12,10 @@ use Symfony\Component\HttpFoundation\Response;
  * The admin list controller for Jeu
  * @Route("/jeu2")
  */
-class Jeu2LegoController extends LegoController
+class Jeu2LegoController extends Controller
 {
 
-    use Controller;
+    use ControllerTrait;
 
     const LEGO_CONFIGURATOR = Configurator::class;
 

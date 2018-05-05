@@ -3,8 +3,8 @@
 namespace App\Controller\Backend;
 
 use App\Configurator\ItemConfigurator as Configurator;
-use Idk\LegoBundle\Controller\LegoController;
-use Idk\LegoBundle\Traits\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Idk\LegoBundle\Traits\ControllerTrait;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -15,10 +15,10 @@ use Symfony\Component\HttpFoundation\Response;
  * The admin list controller for Jeu
  * @Route("/item")
  */
-class ItemLegoController extends LegoController
+class ItemLegoController extends Controller
 {
 
-    use Controller;
+    use ControllerTrait;
     const LEGO_CONFIGURATOR = Configurator::class;
 
 

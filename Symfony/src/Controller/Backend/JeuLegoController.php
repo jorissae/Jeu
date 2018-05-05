@@ -4,7 +4,6 @@ namespace App\Controller\Backend;
 
 use App\Configurator\JeuConfigurator as Configurator;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Idk\LegoBundle\Traits\Controller as TController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 /**
@@ -14,7 +13,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 class JeuLegoController extends Controller
 {
 
-    use \Idk\LegoBundle\Traits\Controller;
+    use \Idk\LegoBundle\Traits\ControllerTrait;
 
     const LEGO_CONFIGURATOR = Configurator::class;
 
