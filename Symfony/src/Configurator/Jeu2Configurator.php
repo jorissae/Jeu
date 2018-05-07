@@ -30,7 +30,7 @@ class Jeu2Configurator extends AbstractDoctrineORMConfigurator
         $list = $this->addIndexComponent(CPNT\ListItems::class,  [
             'can_modify_nb_entity_per_page' => true,
             'entity_per_page' => 20,
-            'fields'=> ['id', 'editeur', 'name', 'nbPlayer','image', 'age'],
+            'fields'=> ['id', 'editeur', 'name', 'nbPlayer','image', 'age', 'createdAt'],
             'sorters' => [['name', 'DESC']],
             'entity_actions' => [CPNT\ListItems::ENTITY_ACTION_EDIT, CPNT\ListItems::ENTITY_ACTION_DELETE, CPNT\ListItems::ENTITY_ACTION_SHOW],
             'bulk_actions' => [CPNT\ListItems::BULK_ACTION_DELETE, new BulkAction('loulou', ['choices'=> ['A'=>'B', 'C'=>'D'], 'route'=>'app_backend_jeulego_bulk'])]

@@ -71,8 +71,8 @@ class Jeu2
     /**
      * @var int
      *
-     * @Lego\Field(label="Date de création")
-     * @Lego\Form\DateForm()
+     * @Lego\Field(label="Date de création",  edit_in_place=true)
+     * @Lego\Form\DateTimeForm()
      * @ORM\Column(name="created_at", type="datetime", nullable=true)
      */
     private $createdAt;
@@ -81,7 +81,7 @@ class Jeu2
      * @var Editeur
      *
      * @ORM\ManyToOne(targetEntity="Editeur")
-     * @Lego\Field(label="Editeur",  path={"route":"app_backend_editeurlego_show", "params"={"id":"editeur.id"}})
+     * @Lego\Field(label="Editeur",  edit_in_place=true, path={"route":"app_backend_editeurlego_show", "params"={"id":"editeur.id"}})
      * @ORM\JoinColumn(name="editeur_id", referencedColumnName="id")
      */
     private $editeur;

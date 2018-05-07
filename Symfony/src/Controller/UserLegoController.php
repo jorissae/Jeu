@@ -13,7 +13,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 class UserLegoController extends Controller
 {
 
-    use \Idk\LegoBundle\Traits\Controller;
+    use \Idk\LegoBundle\Traits\ControllerTrait;
     const LEGO_CONFIGURATOR = Configurator::class;
 
 }
