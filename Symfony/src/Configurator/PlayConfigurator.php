@@ -3,23 +3,30 @@
 namespace App\Configurator;
 
 
-use App\Entity\Jeu;
+use App\Entity\Play;
 use Idk\LegoBundle\Configurator\AbstractDoctrineORMConfigurator;
 use Idk\LegoBundle\Component as CPNT;
 
 /**
  * The admin list configurator for Jeu
  */
-class JeuConfigurator extends AbstractDoctrineORMConfigurator
+class PlayConfigurator extends AbstractDoctrineORMConfigurator
 {
 
 
     public function buildIndex(){
        //tester sans addAddComponent
        //tester avec id annoter de lego/field
-        $this->addIndexComponent(CPNT\Action::class, ['actions' => [CPNT\Action::ADD, CPNT\Action::EXPORT_CSV, CPNT\Action::EXPORT_XLSX]]);
+        $this->addIndexComponent(CPNT\Action::class, ['actions' => [CPNT\Action::ADD]]);
         $this->addIndexComponent(CPNT\Filter::class,[]);
-        $this->addIndexComponent(CPNT\ListItems::class,  ['columns'=> ['name', 'nbPlayer', 'age']]);
+        $this->addIndexComponent(CPNT\ListItems::class,  [
+            'fields'=> ['name', 'pictur', 'nbPlayer', 'age', 'description'],
+            'can_modify_nb_entity_per_page' => true,
+            'entity_actions' => [CPNT\ListItems::ENTITY_ACTION_EDIT, CPNT\ListItems::ENTITY_ACTION_DELETE]
+        ]);
+
+        $this->addShowComponent(CPNT\Item::class,[]);
+        $this->addShowComponent(CPNT\ListItems::class,['fields'=>['duration.duration']], LiaisonPlayDurationConfigurator::class);
 
         $this->addAddComponent(CPNT\Action::class, ['actions' => [CPNT\Action::BACK]]);
         $this->addAddComponent(CPNT\Form::class, []);
@@ -31,7 +38,7 @@ class JeuConfigurator extends AbstractDoctrineORMConfigurator
 
     public function getEntityName()
     {
-        return Jeu::class;
+        return Play::class;
     }
 
     public function getTitle()
@@ -41,6 +48,6 @@ class JeuConfigurator extends AbstractDoctrineORMConfigurator
 
     public function getControllerPath()
     {
-        return 'app_backend_jeulego';
+        return 'app_backend_playlego';
     }
 }

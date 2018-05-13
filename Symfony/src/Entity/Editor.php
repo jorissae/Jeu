@@ -9,10 +9,11 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Jeu
  *
- * @ORM\Table(name="editeur")
- * @ORM\Entity(repositoryClass="App\Repository\EditeurRepository")
+ * @ORM\Table(name="editor")
+ * @Lego\Entity(title="Editeur")
+ * @ORM\Entity(repositoryClass="App\Repository\EditorRepository")
  */
-class Editeur
+class Editor
 {
     /**
      * @var int
@@ -35,11 +36,23 @@ class Editeur
     private $name;
 
     /**
-     * @var Jeu
+     * @var string
      *
-     * @ORM\OneToMany(targetEntity="Jeu", mappedBy="editeur")
+     * @Lego\File(directory="public/uploads/editor")
+     * @Lego\Form\FileForm()
+     * @Lego\Field(label="Logo", image={"directory":"/uploads/editor","width":"100px"})
+     * @ORM\Column(name="logo", type="string")
      */
-    private $jeux;
+    private $logo;
+
+
+    /**
+     * @var Play
+     *
+     * @ORM\OneToMany(targetEntity="Play", mappedBy="editor")
+     */
+    private $plays;
+
 
 
 
@@ -80,45 +93,39 @@ class Editeur
     {
         return $this->name;
     }
+
     /**
-     * Constructor
+     * @return string
      */
-    public function __construct()
+    public function getLogo()
     {
-        $this->jeux = new \Doctrine\Common\Collections\ArrayCollection();
+        return $this->logo;
     }
 
     /**
-     * Add jeux
-     *
-     * @param \App\Entity\Jeu $jeux
-     *
-     * @return Editeur
+     * @param string $logo
      */
-    public function addJeux(\App\Entity\Jeu $jeux)
+    public function setLogo($logo)
     {
-        $this->jeux[] = $jeux;
-
-        return $this;
+        $this->logo = $logo;
     }
 
     /**
-     * Remove jeux
-     *
-     * @param \App\Entity\Jeu $jeux
+     * @return Jeu
      */
-    public function removeJeux(\App\Entity\Jeu $jeux)
+    public function getPlays()
     {
-        $this->jeux->removeElement($jeux);
+        return $this->plays;
     }
 
     /**
-     * Get jeux
-     *
-     * @return \Doctrine\Common\Collections\Collection
+     * @param Jeu $plays
      */
-    public function getJeux()
+    public function setPlays(Play $plays)
     {
-        return $this->jeux;
+        $this->plays = $plays;
     }
+
+
+
 }

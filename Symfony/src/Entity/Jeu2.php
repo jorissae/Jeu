@@ -10,11 +10,10 @@ use Symfony\Component\Validator\Constraints as Assert;
  * Jeu
  *
  * @ORM\Table(name="jeu2")
- * @Lego\Entity(config="App\Configurator\Jeu2Configurator",icon="play")
+ * @Lego\Entity(config="App\Configurator\Jeu2Configurator",title="Jeu2 (test)",icon="play")
  * @ORM\Entity(repositoryClass="App\Repository\Jeu2Repository")
  * @Lego\EntityForm(fields={"name","nbPlayer","age","image","editeur","createdAt"})
  * @Lego\EntityExport(fields={"name"})
- * @Lego\Entity(name="jeu2")
  */
 class Jeu2
 {
@@ -59,6 +58,16 @@ class Jeu2
     private $age;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="star", type="boolean")
+     * @Assert\NotBlank()
+     * @Lego\Field(label="Star",edit_in_place={"reload":"entity"})
+     * @Lego\Filter\BooleanFilter()
+     */
+    private $star;
+
+    /**
      * @var int
      *
      * @Lego\File(directory="public/uploads/jeu")
@@ -80,8 +89,8 @@ class Jeu2
     /**
      * @var Editeur
      *
-     * @ORM\ManyToOne(targetEntity="Editeur")
-     * @Lego\Field(label="Editeur",  edit_in_place=true, path={"route":"app_backend_editeurlego_show", "params"={"id":"editeur.id"}})
+     * @ORM\ManyToOne(targetEntity="Editor")
+     * @Lego\Field(label="Editeur",  edit_in_place={"reload":"entity"}, path={"route":"app_backend_editorlego_show", "params"={"id":"editeur.id"}})
      * @ORM\JoinColumn(name="editeur_id", referencedColumnName="id")
      */
     private $editeur;
@@ -178,7 +187,7 @@ class Jeu2
      *
      * @return Jeu
      */
-    public function setEditeur(\App\Entity\Editeur $editeur = null)
+    public function setEditeur(\App\Entity\Editor $editeur = null)
     {
         $this->editeur = $editeur;
 
@@ -226,6 +235,24 @@ class Jeu2
     {
         $this->createdAt = $createdAt;
     }
+
+    /**
+     * @return int
+     */
+    public function getStar()
+    {
+        return $this->star;
+    }
+
+    /**
+     * @param int $start
+     */
+    public function setStar($star): void
+    {
+        $this->star = $star;
+    }
+
+
 
 
 

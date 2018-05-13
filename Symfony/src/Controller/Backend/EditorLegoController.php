@@ -2,7 +2,7 @@
 
 namespace App\Controller\Backend;
 
-use App\Configurator\EditeurConfigurator as Configurator;
+use App\Configurator\EditorConfigurator as Configurator;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Idk\LegoBundle\Traits\ControllerTrait;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -11,7 +11,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
  * The admin list controller for Jeu
  * @Route("/editeur")
  */
-class EditeurLegoController extends Controller
+class EditorLegoController extends Controller
 {
 
     use ControllerTrait;

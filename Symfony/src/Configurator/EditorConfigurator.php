@@ -2,7 +2,7 @@
 
 namespace App\Configurator;
 
-use App\Entity\Editeur;
+use App\Entity\Editor;
 use App\Form\EditeurType;
 
 use Idk\LegoBundle\Configurator\AbstractDoctrineORMConfigurator;
@@ -11,10 +11,10 @@ use Idk\LegoBundle\Component as CPNT;
 /**
  * The admin list configurator for Jeu
  */
-class EditeurConfigurator extends AbstractDoctrineORMConfigurator
+class EditorConfigurator extends AbstractDoctrineORMConfigurator
 {
 
-    const ENTITY_CLASS_NAME = Editeur::class;
+    const ENTITY_CLASS_NAME = Editor::class;
     const TITLE = 'Gestion des éditeurs';
 
     public function buildAll(){
@@ -36,13 +36,13 @@ class EditeurConfigurator extends AbstractDoctrineORMConfigurator
         $this->addShowComponent(CPNT\Action::class,['actions'=> [CPNT\Action::BACK]]);
         $this->addShowComponent(CPNT\Item::class,['fields'=> ['name']]);
         $this->addShowComponent(CPNT\ListItems::class,[
-            'fields'=>['id','name', 'age'],
+            'fields'=>['id','editeur','name', 'age'],
             'entity_actions' => [CPNT\ListItems::ENTITY_ACTION_EDIT, CPNT\ListItems::ENTITY_ACTION_DELETE],
-        ], JeuConfigurator::class);
+        ], Jeu2Configurator::class);
     }
 
     public function getControllerPath()
     {
-        return 'app_backend_editeurlego';
+        return 'app_backend_editorlego';
     }
 }
