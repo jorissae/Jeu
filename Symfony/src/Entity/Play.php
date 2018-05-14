@@ -29,7 +29,7 @@ class Play
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
-     * @Lego\Field(label="Nom",path="show")
+     * @Lego\Field(label="Nom",path="show", edit_in_place=true)
      * @Lego\Filter\StringFilter()
      */
     private $name;
@@ -93,8 +93,8 @@ class Play
      * @var ArrayCollection
      *
      * @Lego\Field(label="Durées")
-     * @Lego\Form\CollectionForm(entity="App\Entity\LiaisonPlayDuration")
-     * //@Lego\Form\ManyToManyJoinForm(entity="App\Entity\LiaisonPlayDuration")
+     * //@Lego\Form\CollectionForm(entity="App\Entity\LiaisonPlayDuration")
+     * @Lego\Form\ManyToManyJoinForm(entity="App\Entity\LiaisonPlayDuration")
      * @ORM\OneToMany(targetEntity="App\Entity\LiaisonPlayDuration", mappedBy="play", cascade={"persist"})
      */
     private $durations;

@@ -50,6 +50,10 @@ class LiaisonPlayDuration
     private $nbPlayer;
 
 
+
+    public function __toString(){
+        return (string) $this->duration->getDuration() .'mn à '. $this->getNbPlayer(). ' joueurs';
+    }
     /**
      * Get id
      *
