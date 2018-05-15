@@ -47,7 +47,7 @@ class Play
      * @var int
      *
      * @ORM\Column(name="age", type="integer")
-     * @Lego\Field(label="Age")
+     * @Lego\Field(label="Age", sort=true)
      * @Lego\Filter\NumberRangeFilter()
      */
     private $age;
