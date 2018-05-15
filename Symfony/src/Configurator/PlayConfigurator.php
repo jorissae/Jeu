@@ -26,8 +26,8 @@ class PlayConfigurator extends AbstractDoctrineORMConfigurator
         ]);
 
         $this->addShowComponent(CPNT\Item::class,[]);
-        $list =  $this->addShowComponent(CPNT\ListItems::class,['fields'=>['duration.duration']], LiaisonPlayDurationConfigurator::class);
-        $list->add('nbPlayer', ['sort'=>true]);
+        $list =  $this->addShowComponent(CPNT\ListItems::class,['fields'=>['duration.duration', 'nbPlayer']], LiaisonPlayDurationConfigurator::class);
+        //$list->add('nbPlayer', ['sort'=>true]); //no same results (not search annotation)
         $this->addAddComponent(CPNT\Action::class, ['actions' => [CPNT\Action::BACK]]);
         $this->addAddComponent(CPNT\Form::class, []);
 
