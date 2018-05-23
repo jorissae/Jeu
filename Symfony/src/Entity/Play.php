@@ -53,6 +53,16 @@ class Play
     private $age;
 
     /**
+     * @var Author
+     *
+     * @ORM\ManyToMany(targetEntity="Category")
+     * @Lego\Form\EntityForm(class="App\Entity\Category", multiple=true)
+     * @Lego\Field(label="Catégorie", edit_in_place=false)
+     * @ORM\JoinColumn(name="author_id", referencedColumnName="id")
+     */
+    private $categories;
+
+    /**
      * @var Editor
      *
      * @ORM\ManyToOne(targetEntity="Editor")
@@ -62,14 +72,7 @@ class Play
     private $editor;
 
 
-    /**
-     * @var Author
-     *
-     * @ORM\ManyToOne(targetEntity="Category")
-     * @Lego\Field(label="Catégorie",  edit_in_place={"reload":"field"}, path={"route":"lego_show", "params"={"id":"category.id","entity":"category"}})
-     * @ORM\JoinColumn(name="author_id", referencedColumnName="id")
-     */
-    private $category;
+
 
     /**
      * @var string
@@ -77,7 +80,7 @@ class Play
      * @Lego\File(directory="public/uploads/play")
      * @Lego\Form\FileForm()
      * @Lego\Field(label="Image", image={"directory":"/uploads/play","width":"100px"})
-     * @ORM\Column(name="pictur", type="string")
+     * @ORM\Column(name="pictur", type="string", nullable=true)
      */
     private $pictur;
 
@@ -95,7 +98,7 @@ class Play
      * @Lego\Field(label="Durées")
      * //@Lego\Form\CollectionForm(entity="App\Entity\LiaisonPlayDuration")
      * @Lego\Form\ManyToManyJoinForm(entity="App\Entity\LiaisonPlayDuration")
-     * @ORM\OneToMany(targetEntity="App\Entity\LiaisonPlayDuration", mappedBy="play", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="App\Entity\LiaisonPlayDuration",orphanRemoval=true, mappedBy="play", cascade={"persist","remove"})
      */
     private $durations;
 
@@ -104,6 +107,7 @@ class Play
     public function __construct()
     {
         $this->durations = new ArrayCollection();
+        $this->categories = new ArrayCollection();
     }
 
     /**
@@ -207,17 +211,17 @@ class Play
     /**
      * @return Author
      */
-    public function getCategory(): ?Category
+    public function getCategories()
     {
-        return $this->category;
+        return $this->categories;
     }
 
     /**
      * @param Author $category
      */
-    public function setCategory(Category $category): void
+    public function setCategories($categories)
     {
-        $this->category = $category;
+        $this->categories = $categories;
     }
 
     /**
@@ -265,22 +269,19 @@ class Play
      */
     public function setDurations($durations): void
     {
-        foreach($durations as $duration){
+        /*foreach($durations as $duration){
             $duration->setPlay($this);
-        }
+        }*/
         $this->durations = $durations;
     }
 
-    public function addDurations($durations){
-        die('ok');
+
+    public function addDuration(LiaisonPlayDuration $duration){
+        $duration->setPlay($this);
+        $this->durations->add($duration);
     }
 
-    public function addDuration($durations){
-        die('oks');
-    }
-
-
-    public function removeDurations(LiaisonPlayDuration $duration)
+    public function removeDuration(LiaisonPlayDuration $duration)
     {
         $this->durations->removeElement($duration);
     }
