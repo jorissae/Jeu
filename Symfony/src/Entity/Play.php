@@ -10,7 +10,10 @@ use Idk\LegoBundle\Annotation\Entity as Lego;
 /**
  * Jeu
  *
- * @Lego\Entity(config="App\Configurator\PlayConfigurator",title="Jeu")
+ * @Lego\Entity(
+ *     config="App\Configurator\PlayConfigurator",
+ *     title="Jeu",
+ *     permissions={"show"="ROLE_USER"})
  * @ORM\Table(name="jeu")
  * @ORM\Entity(repositoryClass="App\Repository\PlayRepository")
  */
