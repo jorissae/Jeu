@@ -17,7 +17,7 @@ class PlayConfigurator extends AbstractDoctrineORMConfigurator
     public function buildIndex(){
        //tester sans addAddComponent
        //tester avec id annoter de lego/field
-        $this->addIndexComponent(CPNT\Action::class, ['actions' => [CPNT\Action::ADD]]);
+        $this->addIndexComponent(CPNT\Action::class, ['actions' => [CPNT\Action::ADD,CPNT\Action::EXPORT_XLSX]]);
         $this->addIndexComponent(CPNT\Filter::class,[]);
         $list = $this->addIndexComponent(CPNT\ListItems::class,  [
             'fields'=> ['name', 'pictur', 'age', 'description'],

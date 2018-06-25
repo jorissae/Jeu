@@ -16,6 +16,7 @@ use Idk\LegoBundle\Annotation\Entity as Lego;
  *     permissions={"show"="ROLE_USER"})
  * @ORM\Table(name="jeu")
  * @ORM\Entity(repositoryClass="App\Repository\PlayRepository")
+ * @Lego\EntityExport(fields={"id", "name"})
  */
 class Play
 {
