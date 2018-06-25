@@ -1,5 +1,11 @@
 security:
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+    role_hierarchy:
+        ROLE_CONSO: ROLE_USER
+        ROLE_MKG: [ROLE_USER, ROLE_BIBI]
+        ROLE_READER: ROLE_USER
+        ROLE_ADMIN: [ROLE_READER, ROLE_CONSO, ROLE_MKG]
+        ROLE_SUPER_ADMIN: ROLE_ADMIN
     providers:
         main:
             entity: { class: App\Entity\User, property: username }

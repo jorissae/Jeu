@@ -1,5 +1,5 @@
 lego:
-    resource: "@IdkLegoBundle/Resources/config/routing/routes.yml"
+    resource: "@IdkLegoBundle/Resources/config/routing/routes.yaml"
     prefix: /admin
 
 lego_security:

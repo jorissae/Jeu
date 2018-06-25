@@ -49,6 +49,16 @@ class Play
     /**
      * @var int
      *
+     * @ORM\Column(name="note", type="integer")
+     * @Lego\Field(label="Note")
+     * @Lego\Form\NoteForm()
+     * @Lego\Filter\NumberRangeFilter()
+     */
+    private $note;
+
+    /**
+     * @var int
+     *
      * @ORM\Column(name="age", type="integer")
      * @Lego\Field(label="Age", sort=true)
      * @Lego\Filter\NumberRangeFilter()
@@ -288,6 +298,24 @@ class Play
     {
         $this->durations->removeElement($duration);
     }
+
+    /**
+     * @return int
+     */
+    public function getNote()
+    {
+        return $this->note;
+    }
+
+    /**
+     * @param int $note
+     */
+    public function setNote($note)
+    {
+        $this->note = $note;
+    }
+
+
 
 
 
