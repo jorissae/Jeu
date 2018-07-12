@@ -13,7 +13,7 @@ use Idk\LegoBundle\Annotation\Entity as Lego;
  * @Lego\Entity(
  *     config="App\Configurator\PlayConfigurator",
  *     title="Jeu",
- *     permissions={"show"="ROLE_USER"})
+ *     permissions={"edit"="ROLE_USER"})
  * @ORM\Table(name="jeu")
  * @ORM\Entity(repositoryClass="App\Repository\PlayRepository")
  */
@@ -268,6 +268,7 @@ class Play
     }
 
     /**
+
      * @param ArrayCollection $durations
      */
     public function setDurations($durations): void

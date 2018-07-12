@@ -24,7 +24,7 @@ class PlayConfigurator extends AbstractDoctrineORMConfigurator
             'can_modify_nb_entity_per_page' => true,
             'entity_actions' => [CPNT\ListItems::ENTITY_ACTION_EDIT, CPNT\ListItems::ENTITY_ACTION_DELETE]
         ]);
-        $list->add('nbPlayer',[]);
+        $list->add('nbPlayer',['label'=>'NBJ', 'edit_in_place'=>true]);
 
         $this->addShowComponent(CPNT\Item::class,[]);
         $list =  $this->addShowComponent(CPNT\ListItems::class,['fields'=>['duration.duration', 'nbPlayer']], LiaisonPlayDurationConfigurator::class);
