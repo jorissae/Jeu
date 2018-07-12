@@ -16,6 +16,7 @@ use Idk\LegoBundle\Annotation\Entity as Lego;
  *     permissions={"edit"="ROLE_USER"})
  * @ORM\Table(name="jeu")
  * @ORM\Entity(repositoryClass="App\Repository\PlayRepository")
+ * @Lego\EntityExport(fields={"id", "name"})
  */
 class Play
 {
@@ -45,6 +46,16 @@ class Play
      * @Lego\Filter\NumberRangeFilter()
      */
     private $nbPlayer;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="note", type="integer")
+     * @Lego\Field(label="Note")
+     * @Lego\Form\NoteForm()
+     * @Lego\Filter\NumberRangeFilter()
+     */
+    private $note;
 
     /**
      * @var int
@@ -289,6 +300,24 @@ class Play
     {
         $this->durations->removeElement($duration);
     }
+
+    /**
+     * @return int
+     */
+    public function getNote()
+    {
+        return $this->note;
+    }
+
+    /**
+     * @param int $note
+     */
+    public function setNote($note)
+    {
+        $this->note = $note;
+    }
+
+
 
 
 
