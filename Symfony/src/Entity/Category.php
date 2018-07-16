@@ -4,16 +4,20 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Idk\LegoBundle\Annotation\Entity as Lego;
+use Idk\LegoBundle\Model\LegoTreeModel;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Jeu
+ * Category
  *
  * @ORM\Table(name="category")
- * @Lego\Entity(title="Catégorie")
+ * @Lego\Entity(
+ *     config="App\Configurator\CategoryConfigurator",
+ *     title="Catégorie",
+ *     permissions={"all"="ROLE_USER"})
  * @ORM\Entity(repositoryClass="App\Repository\CategoryRepository")
  */
-class Category
+class Category extends LegoTreeModel
 {
     /**
      * @var int
