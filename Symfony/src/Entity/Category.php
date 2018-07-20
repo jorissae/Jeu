@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Idk\LegoBundle\Annotation\Entity as Lego;
+use Idk\LegoBundle\Model\LegoTreeInterface;
 use Idk\LegoBundle\Model\LegoTreeModel;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -25,7 +26,6 @@ class Category extends LegoTreeModel
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
-     * @Lego\Field
      */
     private $id;
 
@@ -39,6 +39,16 @@ class Category extends LegoTreeModel
      */
     private $libelle;
 
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="resume", type="string", length=255, nullable=true)
+     * @Lego\Field(label="Description", edit_in_place=true)
+     * @Lego\Filter\StringFilter()
+     */
+    private $resume;
+
     /**
      * @ORM\ManyToOne(targetEntity="Category")
      * @ORM\JoinColumn(name="tree_root", referencedColumnName="id", onDelete="CASCADE")
@@ -48,6 +58,7 @@ class Category extends LegoTreeModel
     /**
      * @ORM\ManyToOne(targetEntity="Category", inversedBy="children")
      * @ORM\JoinColumn(name="parent_id", referencedColumnName="id", onDelete="CASCADE")
+     * @Lego\Field(label="Parent")
      */
     private $parent;
 
@@ -92,7 +103,7 @@ class Category extends LegoTreeModel
     /**
      * @return mixed
      */
-    public function getParent()
+    public function getParent(): ?LegoTreeInterface
     {
         return $this->parent;
     }
@@ -140,5 +151,23 @@ class Category extends LegoTreeModel
     {
         return $this->id;
     }
+
+    /**
+     * @return string
+     */
+    public function getResume(): ?string
+    {
+        return $this->resume;
+    }
+
+    /**
+     * @param string $resume
+     */
+    public function setResume(string $resume): void
+    {
+        $this->resume = $resume;
+    }
+
+
 
 }

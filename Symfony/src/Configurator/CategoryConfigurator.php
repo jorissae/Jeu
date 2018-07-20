@@ -14,9 +14,18 @@ class CategoryConfigurator extends AbstractDoctrineORMConfigurator
 {
 
     public function buildIndex(){
+         $this->addIndexComponent(CPNT\Action::class,['actions' => [CPNT\Action::ADD]]);
          $this->addIndexComponent(CPNT\TreeItems::class,  [
-            'fields'=> ['libelle'],
+            'fields'=> ['libelle','resume'],
         ]);
+        $this->addIndexComponent(CPNT\ListItems::class,  [
+            'fields'=> ['libelle','resume'],'tree'=>true,
+        ]);
+        $this->addAddComponent(CPNT\Action::class, ['actions' => [CPNT\Action::BACK]]);
+        $this->addAddComponent(CPNT\Form::class, []);
+
+        $this->addEditComponent(CPNT\Action::class, ['actions' => [CPNT\Action::BACK]]);
+        $this->addEditComponent(CPNT\Form::class, []);
     }
 
 
