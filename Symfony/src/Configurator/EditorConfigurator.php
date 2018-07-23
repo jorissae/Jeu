@@ -20,16 +20,19 @@ class EditorConfigurator extends AbstractDoctrineORMConfigurator
 
     public function buildAll(){
 
-        $this->addIndexComponent(CPNT\Action::class,['actions'=>[CPNT\Action::ADD]]);
+        $this->addIndexComponent(CPNT\Action::class,['actions'=>[CPNT\Action::ADD,CPNT\Action::SCREEN('chez bibi', 'bibi')]]);
         $this->addIndexComponent(CPNT\Filter::class,[]);
         $this->addIndexComponent(CPNT\ListItems::class,  [
             'fields'=> ['name'],
-            'entity_actions' => [CPNT\ListItems::ENTITY_ACTION_EDIT, CPNT\ListItems::ENTITY_ACTION_DELETE],
+            'entity_actions' => [CPNT\ListItems::ENTITY_ACTION_EDIT, CPNT\ListItems::ENTITY_ACTION_DELETE, CPNT\ListItems::ENTITY_ACTION_SCREEN('chez bibi', 'bibi')],
             'bulk_actions' => [CPNT\ListItems::BULK_ACTION_DELETE]
         ]);
         $this->addComponent(CPNT\ListItems::class,  [
             'fields'=> ['name'],
             'bulk_actions' => [CPNT\ListItems::BULK_ACTION_DELETE]
+        ], 'bibi');
+        $this->addComponent(CPNT\Item::class,  [
+            'fields'=> ['name']
         ], 'bibi');
         $this->addAddComponent(CPNT\Action::class,['actions'=> [CPNT\Action::BACK]]);
         $this->addAddComponent(CPNT\Form::class, ['form' => EditeurType::class]);
@@ -45,8 +48,8 @@ class EditorConfigurator extends AbstractDoctrineORMConfigurator
         ], Jeu2::class);
     }
 
-    /*static public function getControllerPath()
+    static public function getControllerPath()
     {
         return 'app_backend_editorlego';
-    }*/
+    }
 }

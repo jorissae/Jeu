@@ -47,6 +47,7 @@ class LiaisonPlayDuration
      *
      * @ORM\Column(name="nb_player", type="integer")
      * @Lego\Field(label="Nombre de joueur")
+     * @Lego\Filter\NumberRangeFilter()
      */
     private $nbPlayer;
 

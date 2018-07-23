@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+use App\Entity\Editor;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -23,7 +24,7 @@ class EditeurType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'App\Entity\Editeur'
+            'data_class' => Editor::class
         ));
     }
 

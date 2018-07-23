@@ -20,16 +20,29 @@ class PlayConfigurator extends AbstractDoctrineORMConfigurator
        //tester avec id annoter de lego/field
         $this->addIndexComponent(CPNT\Action::class, ['actions' => [CPNT\Action::ADD,CPNT\Action::EXPORT_XLSX]]);
         $filter = $this->addIndexComponent(CPNT\Filter::class,[]);
+
         $list = $this->addIndexComponent(CPNT\ListItems::class,  [
             'fields'=> ['name', 'pictur', 'age', 'description'],
             'can_modify_nb_entity_per_page' => true,
+            'entity_per_page' => 5,
             'entity_actions' => [CPNT\ListItems::ENTITY_ACTION_EDIT, CPNT\ListItems::ENTITY_ACTION_DELETE]
         ]);
+        $filter2 = $this->addIndexComponent(CPNT\Filter::class,[]);
         $filter->addComponent($list);
         $list->add('nbPlayer',['label'=>'NBJ', 'edit_in_place'=>true]);
-
+        $list2 = $this->addIndexComponent(CPNT\ListItems::class,  [
+            'fields'=> ['name', 'pictur'],
+            'can_modify_nb_entity_per_page' => false,
+            'entity_per_page' => 5,
+            'dql' => 'b.age = 21',
+            'entity_actions' => [CPNT\ListItems::ENTITY_ACTION_EDIT, CPNT\ListItems::ENTITY_ACTION_DELETE]
+        ]);
+        $filter2->addComponent($list2);
         $this->addShowComponent(CPNT\Item::class,[]);
+
+        $filter3 = $this->addShowComponent(CPNT\Filter::class,['fields'=>['nbPlayer']], LiaisonPlayDuration::class);
         $list =  $this->addShowComponent(CPNT\ListItems::class,['fields'=>['duration.duration', 'nbPlayer']], LiaisonPlayDuration::class);
+        $filter3->addComponent($list);
         //$list->add('nbPlayer', ['sort'=>true]); //no same results (not search annotation)
         $this->addAddComponent(CPNT\Action::class, ['actions' => [CPNT\Action::BACK]]);
         $this->addAddComponent(CPNT\Form::class, []);
