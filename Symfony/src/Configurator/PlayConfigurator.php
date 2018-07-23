@@ -18,12 +18,13 @@ class PlayConfigurator extends AbstractDoctrineORMConfigurator
        //tester sans addAddComponent
        //tester avec id annoter de lego/field
         $this->addIndexComponent(CPNT\Action::class, ['actions' => [CPNT\Action::ADD,CPNT\Action::EXPORT_XLSX]]);
-        $this->addIndexComponent(CPNT\Filter::class,[]);
+        $filter = $this->addIndexComponent(CPNT\Filter::class,[]);
         $list = $this->addIndexComponent(CPNT\ListItems::class,  [
             'fields'=> ['name', 'pictur', 'age', 'description'],
             'can_modify_nb_entity_per_page' => true,
             'entity_actions' => [CPNT\ListItems::ENTITY_ACTION_EDIT, CPNT\ListItems::ENTITY_ACTION_DELETE]
         ]);
+        $filter->addComponent($list);
         $list->add('nbPlayer',['label'=>'NBJ', 'edit_in_place'=>true]);
 
         $this->addShowComponent(CPNT\Item::class,[]);

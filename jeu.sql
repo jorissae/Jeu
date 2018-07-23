@@ -26,43 +26,6 @@ SET time_zone = "+00:00";
 -- Structure de la table `app_users`
 --
 
-CREATE TABLE `app_users` (
-  `id` int(11) NOT NULL,
-  `username` varchar(25) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `password` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `is_active` tinyint(1) NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `author`
---
-
-CREATE TABLE `author` (
-  `id` int(11) NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `category`
---
-
-CREATE TABLE `category` (
-  `id` int(11) NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tree_lvl` int(10) UNSIGNED NOT NULL,
-  `tree_left` int(10) UNSIGNED NOT NULL,
-  `tree_right` int(10) UNSIGNED NOT NULL,
-  `tree_root` int(11) DEFAULT NULL,
-  `parent_id` int(11) DEFAULT NULL,
-  `resume` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
 --
 -- Contenu de la table `category`
 --
@@ -76,57 +39,12 @@ INSERT INTO `category` (`id`, `name`, `tree_lvl`, `tree_left`, `tree_right`, `tr
 (6, '+20', 2, 8, 9, 1, 5, NULL),
 (7, '+40', 2, 10, 11, 1, 5, NULL);
 
--- --------------------------------------------------------
 
---
--- Structure de la table `config`
---
-
-CREATE TABLE `config` (
-  `id` int(11) NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `show_message_tranche` tinyint(1) DEFAULT NULL,
-  `test` datetime DEFAULT NULL,
-  `test2` time DEFAULT NULL,
-  `test3` date DEFAULT NULL,
-  `test4` int(11) DEFAULT NULL,
-  `var_price_base` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `choice_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `base_visuel` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `default_name_elm` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `sub_name_elm` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `css_class` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `base` longtext COLLATE utf8mb4_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `duration`
---
-
-CREATE TABLE `duration` (
-  `id` int(11) NOT NULL,
-  `name` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Contenu de la table `duration`
---
 
 INSERT INTO `duration` (`id`, `name`) VALUES
 (1, 60);
 
 -- --------------------------------------------------------
-
---
--- Structure de la table `editeur`
---
-
-CREATE TABLE `editeur` (
-  `id` int(11) NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Contenu de la table `editeur`
@@ -142,12 +60,6 @@ INSERT INTO `editeur` (`id`, `name`) VALUES
 -- Structure de la table `editor`
 --
 
-CREATE TABLE `editor` (
-  `id` int(11) NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `logo` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
 --
 -- Contenu de la table `editor`
 --
@@ -161,38 +73,12 @@ INSERT INTO `editor` (`id`, `name`, `logo`) VALUES
 -- Structure de la table `item`
 --
 
-CREATE TABLE `item` (
-  `id` int(11) NOT NULL,
-  `circonstance` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `visuel` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `vignette` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `color` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `url` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `libelle` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `variable` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `prix` double DEFAULT NULL,
-  `prix2` double DEFAULT NULL,
-  `sub_libelle` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `code` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `aide` longtext COLLATE utf8mb4_unicode_ci
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
 -- --------------------------------------------------------
 
 --
 -- Structure de la table `jeu`
 --
 
-CREATE TABLE `jeu` (
-  `id` int(11) NOT NULL,
-  `editeur_id` int(11) DEFAULT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `nbPlayer` int(11) NOT NULL,
-  `age` int(11) NOT NULL,
-  `pictur` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `description` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `note` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Contenu de la table `jeu`
@@ -748,46 +634,15 @@ INSERT INTO `jeu` (`id`, `editeur_id`, `name`, `nbPlayer`, `age`, `pictur`, `des
 -- Structure de la table `jeu2`
 --
 
-CREATE TABLE `jeu2` (
-  `id` int(11) NOT NULL,
-  `editeur_id` int(11) DEFAULT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `nbPlayer` int(11) NOT NULL,
-  `age` int(11) NOT NULL,
-  `star` tinyint(1) NOT NULL,
-  `image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
 -- --------------------------------------------------------
 
 --
 -- Structure de la table `join_play_author`
 --
 
-CREATE TABLE `join_play_author` (
-  `id` int(11) NOT NULL,
-  `author_id` int(11) DEFAULT NULL,
-  `play_id` int(11) DEFAULT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
 -- --------------------------------------------------------
 
---
--- Structure de la table `join_play_duration`
---
 
-CREATE TABLE `join_play_duration` (
-  `id` int(11) NOT NULL,
-  `duration_id` int(11) DEFAULT NULL,
-  `play_id` int(11) DEFAULT NULL,
-  `nb_player` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Contenu de la table `join_play_duration`
---
 
 INSERT INTO `join_play_duration` (`id`, `duration_id`, `play_id`, `nb_player`) VALUES
 (1, 1, 1, 5),
@@ -803,20 +658,11 @@ INSERT INTO `join_play_duration` (`id`, `duration_id`, `play_id`, `nb_player`) V
 -- Structure de la table `migration_versions`
 --
 
-CREATE TABLE `migration_versions` (
-  `version` varchar(255) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
 -- --------------------------------------------------------
 
 --
 -- Structure de la table `play_category`
 --
-
-CREATE TABLE `play_category` (
-  `play_id` int(11) NOT NULL,
-  `category_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -824,53 +670,11 @@ CREATE TABLE `play_category` (
 -- Structure de la table `projet`
 --
 
-CREATE TABLE `projet` (
-  `id` int(11) NOT NULL,
-  `data` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `ip` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `code` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` datetime DEFAULT NULL,
-  `updated_at` datetime DEFAULT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `nb_volet` int(11) NOT NULL,
-  `nb_volet_qte` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
 -- --------------------------------------------------------
 
 --
 -- Structure de la table `step`
 --
-
-CREATE TABLE `step` (
-  `id` int(11) NOT NULL,
-  `configurateur_id` int(11) DEFAULT NULL,
-  `label` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `label_header` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `label_recap` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `label_next` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `icon` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `reset` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `hidden_recap` tinyint(1) DEFAULT NULL,
-  `final` tinyint(1) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `user`
---
-
-CREATE TABLE `user` (
-  `id` int(11) NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `username` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `enable` tinyint(1) DEFAULT NULL,
-  `roles` longtext COLLATE utf8mb4_unicode_ci COMMENT '(DC2Type:array)',
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `salt` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Contenu de la table `user`
@@ -881,29 +685,6 @@ CREATE TABLE `user` (
 -- Structure de la table `variable`
 --
 
-CREATE TABLE `variable` (
-  `id` int(11) NOT NULL,
-  `step_id` int(11) DEFAULT NULL,
-  `label` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `variable` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `choice` int(11) DEFAULT NULL,
-  `base` tinyint(1) DEFAULT NULL,
-  `intro` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `sub_intro` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `no_validate` tinyint(1) DEFAULT NULL,
-  `hidden_recap` tinyint(1) DEFAULT NULL,
-  `widget` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `action` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `aide_html` longtext COLLATE utf8mb4_unicode_ci,
-  `html` longtext COLLATE utf8mb4_unicode_ci,
-  `css_class` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `main_option` tinyint(1) DEFAULT NULL,
-  `option_intro` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `option_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `vars` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Index pour les tables exportées

@@ -10,11 +10,5 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class DefaultController extends Controller{
 
 
-    /**
-     * @Route("/", name="lego_homepage")
-     */
-    public function index()
-    {
-        return $this->render('Backend/Default/dashboard.html.twig');
-    }
+
 }
