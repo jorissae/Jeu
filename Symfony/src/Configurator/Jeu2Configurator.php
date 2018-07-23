@@ -3,6 +3,7 @@
 namespace App\Configurator;
 
 use App\Controller\Backend\Jeu2LegoController;
+use App\Entity\Editor;
 use App\Entity\Jeu2;
 use App\Form\Jeu2Type;
 
@@ -48,7 +49,7 @@ class Jeu2Configurator extends AbstractDoctrineORMConfigurator
             'can_modify_nb_entity_per_page' => true,
             'entity_actions' => [CPNT\ListItems::ENTITY_ACTION_EDIT, CPNT\ListItems::ENTITY_ACTION_DELETE],
             'bulk_actions' => []
-        ], EditorConfigurator::class);
+        ], Editor::class);
 
         //Add
         $this->addAddComponent(CPNT\Action::class,['actions'=> [CPNT\Action::BACK]]);
@@ -65,10 +66,10 @@ class Jeu2Configurator extends AbstractDoctrineORMConfigurator
             'fields'=>['name'],
             'can_modify_nb_entity_per_page' => true,
             'entity_actions' => [CPNT\ListItems::ENTITY_ACTION_EDIT, CPNT\ListItems::ENTITY_ACTION_DELETE],
-        ], EditorConfigurator::class);
+        ], Editor::class);
     }
 
-    public function getControllerPath()
+    static public function getControllerPath()
     {
         return 'app_backend_jeu2lego';
     }

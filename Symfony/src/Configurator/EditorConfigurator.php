@@ -7,6 +7,7 @@ use App\Form\EditeurType;
 
 use Idk\LegoBundle\Configurator\AbstractDoctrineORMConfigurator;
 use Idk\LegoBundle\Component as CPNT;
+use App\Entity\Jeu2;
 
 /**
  * The admin list configurator for Jeu
@@ -26,7 +27,10 @@ class EditorConfigurator extends AbstractDoctrineORMConfigurator
             'entity_actions' => [CPNT\ListItems::ENTITY_ACTION_EDIT, CPNT\ListItems::ENTITY_ACTION_DELETE],
             'bulk_actions' => [CPNT\ListItems::BULK_ACTION_DELETE]
         ]);
-
+        $this->addComponent(CPNT\ListItems::class,  [
+            'fields'=> ['name'],
+            'bulk_actions' => [CPNT\ListItems::BULK_ACTION_DELETE]
+        ], 'bibi');
         $this->addAddComponent(CPNT\Action::class,['actions'=> [CPNT\Action::BACK]]);
         $this->addAddComponent(CPNT\Form::class, ['form' => EditeurType::class]);
 
@@ -38,11 +42,11 @@ class EditorConfigurator extends AbstractDoctrineORMConfigurator
         $this->addShowComponent(CPNT\ListItems::class,[
             'fields'=>['id','editeur','name', 'age'],
             'entity_actions' => [CPNT\ListItems::ENTITY_ACTION_EDIT, CPNT\ListItems::ENTITY_ACTION_DELETE],
-        ], Jeu2Configurator::class);
+        ], Jeu2::class);
     }
 
-    public function getControllerPath()
+    /*static public function getControllerPath()
     {
         return 'app_backend_editorlego';
-    }
+    }*/
 }

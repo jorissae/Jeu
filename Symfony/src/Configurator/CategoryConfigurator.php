@@ -6,6 +6,7 @@ namespace App\Configurator;
 use Idk\LegoBundle\Configurator\AbstractDoctrineORMConfigurator;
 use Idk\LegoBundle\Component as CPNT;
 use App\Entity\Category;
+use Idk\LegoBundle\Lib\Path;
 
 /**
  * The admin list configurator for Jeu
@@ -39,8 +40,9 @@ class CategoryConfigurator extends AbstractDoctrineORMConfigurator
         return 'Gestion des category';
     }
 
-    public function getControllerPath()
+    static public function getControllerPath()
     {
         return 'app_backend_categorylego';
     }
+
 }

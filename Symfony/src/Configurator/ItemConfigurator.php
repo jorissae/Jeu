@@ -35,7 +35,7 @@ class ItemConfigurator extends AbstractDoctrineORMConfigurator
         $this->addEditComponent(CPNT\Form::class,['title'=>'Edition d\'un item']);
     }
 
-    public function getControllerPath()
+    static public function getControllerPath()
     {
         return 'app_backend_itemlego';
     }

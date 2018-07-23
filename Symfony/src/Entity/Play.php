@@ -102,7 +102,6 @@ class Play
      * @var string
      *
      * @Lego\Field(label="Description")
-     * @Lego\Form\JsonHumanForm()
      * @ORM\Column(name="description", type="string")
      */
     private $description;
@@ -267,7 +266,7 @@ class Play
     /**
      * @param string $description
      */
-    public function setDescription(string $description)
+    public function setDescription(?string $description)
     {
         $this->description = $description;
     }

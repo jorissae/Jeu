@@ -26,7 +26,7 @@ class StepConfigurator extends AbstractDoctrineORMConfigurator
         $this->addEditComponent(CPNT\Form::class,['title'=>'Edition d\'un step']);
     }
 
-    public function getControllerPath()
+    static public function getControllerPath()
     {
         return 'app_backend_steplego';
     }

@@ -29,7 +29,7 @@ class ProjetConfigurator extends AbstractDoctrineORMConfigurator
         $this->addShowComponent(CPNT\Custom::class, ['src' => 'App:ProjetLego:showJson']);
     }
 
-    public function getControllerPath()
+    static public function getControllerPath()
     {
         return 'app_backend_projetlego';
     }

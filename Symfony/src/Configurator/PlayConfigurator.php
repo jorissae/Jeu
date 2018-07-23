@@ -3,6 +3,7 @@
 namespace App\Configurator;
 
 
+use App\Entity\LiaisonPlayDuration;
 use App\Entity\Play;
 use Idk\LegoBundle\Configurator\AbstractDoctrineORMConfigurator;
 use Idk\LegoBundle\Component as CPNT;
@@ -28,7 +29,7 @@ class PlayConfigurator extends AbstractDoctrineORMConfigurator
         $list->add('nbPlayer',['label'=>'NBJ', 'edit_in_place'=>true]);
 
         $this->addShowComponent(CPNT\Item::class,[]);
-        $list =  $this->addShowComponent(CPNT\ListItems::class,['fields'=>['duration.duration', 'nbPlayer']], LiaisonPlayDurationConfigurator::class);
+        $list =  $this->addShowComponent(CPNT\ListItems::class,['fields'=>['duration.duration', 'nbPlayer']], LiaisonPlayDuration::class);
         //$list->add('nbPlayer', ['sort'=>true]); //no same results (not search annotation)
         $this->addAddComponent(CPNT\Action::class, ['actions' => [CPNT\Action::BACK]]);
         $this->addAddComponent(CPNT\Form::class, []);
@@ -48,7 +49,7 @@ class PlayConfigurator extends AbstractDoctrineORMConfigurator
         return 'Gestion des jeux';
     }
 
-    public function getControllerPath()
+    static public function getControllerPath()
     {
         return 'app_backend_playlego';
     }

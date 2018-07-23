@@ -10,6 +10,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * LiaisonPlayDuration
  *
  * @ORM\Table(name="join_play_duration")
+ * @Lego\Entity(config="App\Configurator\LiaisonPlayDurationConfigurator")
  * @ORM\Entity()
  */
 class LiaisonPlayDuration

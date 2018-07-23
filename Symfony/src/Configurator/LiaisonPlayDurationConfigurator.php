@@ -31,7 +31,7 @@ class LiaisonPlayDurationConfigurator extends AbstractDoctrineORMConfigurator
         $this->addShowComponent(CPNT\Item::class, []);
     }
 
-    public function getControllerPath()
+    static public function getControllerPath()
     {
         return 'app_backend_liaisonplaydurationlego';
     }

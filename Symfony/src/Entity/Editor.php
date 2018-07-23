@@ -10,7 +10,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * Jeu
  *
  * @ORM\Table(name="editor")
- * @Lego\Entity(title="Editeur")
+ * @Lego\Entity(title="Editeur",config="App\Configurator\EditorConfigurator")
  * @ORM\Entity(repositoryClass="App\Repository\EditorRepository")
  */
 class Editor
