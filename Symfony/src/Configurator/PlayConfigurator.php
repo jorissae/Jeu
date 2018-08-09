@@ -32,6 +32,7 @@ class PlayConfigurator extends AbstractDoctrineORMConfigurator
         $filter2 = $this->addIndexComponent(CPNT\Filter::class,[]);
         $filter->addComponent($list);
         $list->add('nbPlayer',['label'=>'NBJ', 'edit_in_place'=>true]);
+        $list->addPredefinedBulkAction(CPNT\ListItems::BULK_ACTION_DELETE);
 
         $list2 = $this->addIndexComponent(CPNT\ListItems::class,  [
             'fields'=> ['name', 'pictur'],
