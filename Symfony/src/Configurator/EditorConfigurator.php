@@ -16,7 +16,7 @@ class EditorConfigurator extends AbstractDoctrineORMConfigurator
 {
 
     const ENTITY_CLASS_NAME = Editor::class;
-    const TITLE = 'Gestion des éditeurs';
+    const TITLE = 'Gestion des éditeurs!';
 
     public function buildAll(){
 

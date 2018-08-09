@@ -18,7 +18,7 @@ class PlayConfigurator extends AbstractDoctrineORMConfigurator
     public function buildIndex(){
        //tester sans addAddComponent
        //tester avec id annoter de lego/field
-        $this->addIndexComponent(CPNT\Action::class, ['actions' => [CPNT\Action::ADD,CPNT\Action::EXPORT_XLSX]]);
+        $actions = $this->addIndexComponent(CPNT\Action::class, ['actions' => [CPNT\Action::ADD]]);
         $filter = $this->addIndexComponent(CPNT\Filter::class,[]);
 
         $list = $this->addIndexComponent(CPNT\ListItems::class,  [
@@ -27,9 +27,12 @@ class PlayConfigurator extends AbstractDoctrineORMConfigurator
             'entity_per_page' => 5,
             'entity_actions' => [CPNT\ListItems::ENTITY_ACTION_EDIT, CPNT\ListItems::ENTITY_ACTION_DELETE]
         ]);
+        $actions->add(CPNT\Action::EXPORT($list, 'xlsx'));
+        $actions->add(CPNT\Action::EXPORT($list));
         $filter2 = $this->addIndexComponent(CPNT\Filter::class,[]);
         $filter->addComponent($list);
         $list->add('nbPlayer',['label'=>'NBJ', 'edit_in_place'=>true]);
+
         $list2 = $this->addIndexComponent(CPNT\ListItems::class,  [
             'fields'=> ['name', 'pictur'],
             'can_modify_nb_entity_per_page' => false,
@@ -37,6 +40,7 @@ class PlayConfigurator extends AbstractDoctrineORMConfigurator
             'dql' => 'b.age = 21',
             'entity_actions' => [CPNT\ListItems::ENTITY_ACTION_EDIT, CPNT\ListItems::ENTITY_ACTION_DELETE]
         ]);
+        $actions->add(CPNT\Action::EXPORT($list2));
         $filter2->addComponent($list2);
         $this->addShowComponent(CPNT\Item::class,[]);
 

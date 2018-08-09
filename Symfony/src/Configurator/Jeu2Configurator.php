@@ -49,7 +49,7 @@ class Jeu2Configurator extends AbstractDoctrineORMConfigurator
             'can_modify_nb_entity_per_page' => true,
             'entity_actions' => [CPNT\ListItems::ENTITY_ACTION_EDIT, CPNT\ListItems::ENTITY_ACTION_DELETE],
             'bulk_actions' => []
-        ], Editor::class);
+        ], Editor::class, "B");
 
         //Add
         $this->addAddComponent(CPNT\Action::class,['actions'=> [CPNT\Action::BACK]]);
@@ -66,7 +66,7 @@ class Jeu2Configurator extends AbstractDoctrineORMConfigurator
             'fields'=>['name'],
             'can_modify_nb_entity_per_page' => true,
             'entity_actions' => [CPNT\ListItems::ENTITY_ACTION_EDIT, CPNT\ListItems::ENTITY_ACTION_DELETE],
-        ], Editor::class);
+        ], Editor::class, "A");
     }
 
     static public function getControllerPath()
