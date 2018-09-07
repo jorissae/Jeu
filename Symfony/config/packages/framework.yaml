@@ -31,5 +31,3 @@ framework:
     default_locale: fr
     translator:
         fallbacks: ['fr']
-    templating:
-        engines: ['twig']

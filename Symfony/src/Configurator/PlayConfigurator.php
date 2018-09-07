@@ -41,6 +41,7 @@ class PlayConfigurator extends AbstractDoctrineORMConfigurator
             'dql' => 'b.age = 21',
             'entity_actions' => [CPNT\ListItems::ENTITY_ACTION_EDIT, CPNT\ListItems::ENTITY_ACTION_DELETE]
         ]);
+        $list2->addPredefinedBulkAction(CPNT\ListItems::BULK_ACTION_DELETE);
         $actions->add(CPNT\Action::EXPORT($list2));
         $filter2->addComponent($list2);
         $this->addShowComponent(CPNT\Item::class,[]);
