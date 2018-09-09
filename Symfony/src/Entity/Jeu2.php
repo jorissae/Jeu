@@ -32,7 +32,7 @@ class Jeu2
      *
      * @ORM\Column(name="name", type="string", length=255)
      * @Assert\NotBlank()
-     * @Lego\Field(label="Nom", edit_in_place=true, path={"route":"app_backend_jeulego_show", "params"={"id":"id"}})
+     * @Lego\Field(label="Nom", edit_in_place=true, path={"route":"app_backend_jeu2lego_show", "params"={"id":"id"}})
      * @Lego\Filter\StringFilter()
      */
     private $name;
