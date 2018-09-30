@@ -2,7 +2,6 @@
 
 namespace App\Entity;
 
-use App\Configurator\LiaisonPlayDurationConfigurator;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Idk\LegoBundle\Annotation\Entity as Lego;
