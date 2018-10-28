@@ -30,6 +30,8 @@ class Jeu2LegoController extends Controller
      * @Method({"GET", "POST"})
      */
     public function loulouAction($component, $entity){
+        $entity = $this->getDoctrine()->getRepository(Jeu2::class)->find(1);
+        return $this->render('Backend/Default/index.html.twig', ['entity'=>$entity]);
         return new Response('<div class="row"><div class="col-md-12"><div class="box"><div class="box-body">'.$component->getId().'</div></div></div></div>');
     }
 

@@ -15,4 +15,5 @@ return [
     Symfony\Bundle\MakerBundle\MakerBundle::class => ['dev' => true],
     Symfony\Bundle\WebServerBundle\WebServerBundle::class => ['dev' => true],
     Idk\LegoBundle\IdkLegoBundle::class => ['all' => true],
+    Idk\LegoMediaBundle\IdkLegoMediaBundle::class => ['all' => true]
 ];

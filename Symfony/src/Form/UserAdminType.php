@@ -28,6 +28,7 @@ class UserAdminType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('username');
+        $builder->add('name');
         $builder->add('roles', RoleType::class);
         $builder->add('plainPassword', RepeatedType::class, array(
             'type' => PasswordType::class,

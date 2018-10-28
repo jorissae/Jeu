@@ -9,7 +9,8 @@ use Doctrine\ORM\Mapping as ORM;
  * Article
  *
  * @ORM\Table(name="config")
- * @ORM\Entity(repositoryClass="App\Entity\ConfigRepository")
+ * @Lego\Entity(config="App\Configurator\ConfigConfigurator",title="Config (all type)",icon="play")
+ * @ORM\Entity()
  */
 class Config
 {
@@ -26,7 +27,7 @@ class Config
     /**
      * @var string
      *
-     * @Lego\Form\GeoJsonForm()
+     * @Lego\Form\LatLngForm()
      * @Lego\Field(label="Nom")
      * @ORM\Column(name="name", type="string")
      */

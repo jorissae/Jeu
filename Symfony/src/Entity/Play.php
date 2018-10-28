@@ -251,7 +251,9 @@ class Play
      */
     public function setPictur($pictur)
     {
-        $this->pictur = $pictur;
+        if($pictur) {
+            $this->pictur = $pictur;
+        }
     }
 
     /**

@@ -15,11 +15,12 @@ class AuthorConfigurator extends AbstractDoctrineORMConfigurator
     public function buildIndex()
     {
         $this->addIndexComponent(CPNT\Action::class, ['actions' => [CPNT\Action::ADD]]);
-        $this->addIndexComponent(CPNT\Filter::class, []);
-        $this->addIndexComponent(CPNT\ListItems::class, [
+        $filter = $this->addIndexComponent(CPNT\Filter::class, []);
+        $list = $this->addIndexComponent(CPNT\ListItems::class, [
             'entity_actions' => [CPNT\ListItems::ENTITY_ACTION_EDIT, CPNT\ListItems::ENTITY_ACTION_DELETE],
             'bulk_actions' => [CPNT\ListItems::BULK_ACTION_DELETE]
         ]);
+        //$filter->addComponent($list);
 
         $this->addAddComponent(CPNT\Action::class, ['actions' => [CPNT\Action::BACK]]);
         $this->addAddComponent(CPNT\Form::class, []);

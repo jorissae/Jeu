@@ -7,6 +7,7 @@ use App\Entity\LiaisonPlayDuration;
 use App\Entity\Play;
 use Idk\LegoBundle\Configurator\AbstractDoctrineORMConfigurator;
 use Idk\LegoBundle\Component as CPNT;
+use Idk\LegoMediaBundle\Brick\Attachment;
 
 /**
  * The admin list configurator for Jeu
@@ -20,6 +21,7 @@ class PlayConfigurator extends AbstractDoctrineORMConfigurator
        //tester avec id annoter de lego/field
         $actions = $this->addIndexComponent(CPNT\Action::class, ['actions' => [CPNT\Action::ADD]]);
         $filter = $this->addIndexComponent(CPNT\Filter::class,[]);
+        $this->addIndexComponent(Attachment::class, []);
 
         $list = $this->addIndexComponent(CPNT\ListItems::class,  [
             'fields'=> ['name', 'pictur', 'age', 'description'],
@@ -45,6 +47,7 @@ class PlayConfigurator extends AbstractDoctrineORMConfigurator
         $actions->add(CPNT\Action::EXPORT($list2));
         $filter2->addComponent($list2);
         $this->addShowComponent(CPNT\Item::class,[]);
+        $this->addShowComponent(Attachment::class, []);
 
         $filter3 = $this->addShowComponent(CPNT\Filter::class,['fields'=>['nbPlayer']], LiaisonPlayDuration::class);
         $list =  $this->addShowComponent(CPNT\ListItems::class,['fields'=>['duration.duration', 'nbPlayer']], LiaisonPlayDuration::class);
