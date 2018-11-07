@@ -26,6 +26,13 @@ class DefaultController extends Controller{
      */
     public function index(Request $request)
     {
+        $form = $this->createForm(PlayFilterType::class);
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid()){
+            //dd($data = $form->getData());
+        }
+
+
         return $this->render('Frontend/Default/homepage.html.twig', [
             'plays' => $this->em->getRepository(Play::class)->findAll()
         ]);

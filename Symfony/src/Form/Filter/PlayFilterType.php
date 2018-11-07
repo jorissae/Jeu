@@ -14,17 +14,17 @@ class PlayFilterType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nb_players',TextType::class)
+            ->add('nb_players',TextType::class, ['attr'=>['placeholder'=>'Nombre de joueurs']])
             ->add('time', ChoiceType::class, ['choices' => [
-                '10' => '10mn',
-                '30' => '30mn',
-                '60' => '1heur'
+                '10 mn' => '10',
+                '30 mn' => '30',
+                '1 heur' => '60'
             ]]);
     }
 
     public function getBlockPrefix()
     {
-        return 'filter_';
+        return 'filter';
     }
 
 }

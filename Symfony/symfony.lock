@@ -110,6 +110,15 @@
     "phpoffice/phpspreadsheet": {
         "version": "1.3.1"
     },
+    "prestigejo/lego-media-bundle": {
+        "version": "0.1",
+        "recipe": {
+            "repo": "github.com/prestigejo/flex",
+            "branch": "master",
+            "version": "0.1",
+            "ref": "aea97d72d926d32904b0cd980f17cfebce2115d9"
+        }
+    },
     "prestigejo/legobundle": {
         "version": "0.2",
         "recipe": {
