@@ -10,21 +10,7 @@
                     </div>
                     <div class="row">
                         <div class="header-form">
-                            <div class="form-inline">
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-users"></i></span>
-                                    <input type="text" placeholder="Nombre joueurs" class="form-control">
-                                </div>
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-dashboard"></i></span>
-                                    <select class="form-control">
-                                        <option>10mn</option>
-                                        <option>30mn</option>
-                                        <option>1heur</option>
-                                    </select>
-                                </div>
-                                <button  class="btn btn-success"><i class="fa fa-check"></i>&nbsp;Chercher</button>
-                            </div>
+                             {{ render(controller('App\\Controller\\Frontend\\DefaultController::Filter')) }}
                         </div>
                     </div>
                 </div>

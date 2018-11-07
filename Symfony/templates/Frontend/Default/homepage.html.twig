@@ -1,5 +1,12 @@
 {% extends 'Frontend/base.html.twig' %}
 
 {% block body %}
-Hello guy
+{%  for play in plays %}
+    <div>
+        {%  if play.pictur %}
+            <img height="40px" src="/uploads/play/{{  play.pictur  }}"/>
+        {%  endif %}
+        {{  play.name  }}
+    </div>
+{%  endfor %}
 {% endblock %}
