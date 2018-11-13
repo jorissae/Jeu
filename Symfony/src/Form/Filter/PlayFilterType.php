@@ -16,9 +16,9 @@ class PlayFilterType extends AbstractType
         $builder
             ->add('nb_players',TextType::class, ['attr'=>['placeholder'=>'Nombre de joueurs']])
             ->add('time', ChoiceType::class, ['choices' => [
-                '10 mn' => '10',
-                '30 mn' => '30',
-                '1 heur' => '60'
+                '10 min' => '10',
+                '30 min' => '30',
+                '1 heure' => '60'
             ]]);
     }
 

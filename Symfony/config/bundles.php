@@ -16,4 +16,6 @@ return [
     Symfony\Bundle\WebServerBundle\WebServerBundle::class => ['dev' => true],
     Idk\LegoBundle\IdkLegoBundle::class => ['all' => true],
     Idk\LegoMediaBundle\IdkLegoMediaBundle::class => ['all' => true],
+    Liip\ImagineBundle\LiipImagineBundle::class => ['all' => true],
+    Knp\Bundle\PaginatorBundle\KnpPaginatorBundle::class => ['all' => true],
 ];

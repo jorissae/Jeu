@@ -30,7 +30,7 @@ class Duration
      *
      * @ORM\Column(name="name", type="integer", length=255)
      * @Assert\NotBlank()
-     * @Lego\Field(label="Durée en mn", twig="{{ view.value }} Mn")
+     * @Lego\Field(label="Durée en minutes", twig="{{ view.value }} minutes")
      */
     private $duration;
 
@@ -39,7 +39,7 @@ class Duration
 
 
     public function __toString(){
-        return (string)$this->duration;
+        return (string)$this->duration .' minutes';
     }
     /**
      * Get id

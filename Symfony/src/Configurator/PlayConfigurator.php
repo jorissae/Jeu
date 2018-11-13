@@ -24,9 +24,9 @@ class PlayConfigurator extends AbstractDoctrineORMConfigurator
         $this->addIndexComponent(Attachment::class, []);
 
         $list = $this->addIndexComponent(CPNT\ListItems::class,  [
-            'fields'=> ['name', 'pictur', 'age', 'description'],
+            'fields'=> ['name', 'logo', 'age', 'duration', 'genres', 'themes'],
             'can_modify_nb_entity_per_page' => true,
-            'entity_per_page' => 5,
+            'entity_per_page' => 20,
             'entity_actions' => [CPNT\ListItems::ENTITY_ACTION_EDIT, CPNT\ListItems::ENTITY_ACTION_DELETE]
         ]);
         $actions->add(CPNT\Action::EXPORT($list, 'xlsx'));
@@ -39,7 +39,7 @@ class PlayConfigurator extends AbstractDoctrineORMConfigurator
         $list2 = $this->addIndexComponent(CPNT\ListItems::class,  [
             'fields'=> ['name', 'pictur'],
             'can_modify_nb_entity_per_page' => false,
-            'entity_per_page' => 5,
+            'entity_per_page' => 20,
             'dql' => 'b.age = 21',
             'entity_actions' => [CPNT\ListItems::ENTITY_ACTION_EDIT, CPNT\ListItems::ENTITY_ACTION_DELETE]
         ]);

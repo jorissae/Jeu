@@ -6,6 +6,8 @@ use App\Form\Filter\PlayFilterType;
 use Doctrine\ORM\EntityManagerInterface;
 use Idk\LegoBundle\Service\Tag\ComponentChain;
 use Idk\LegoBundle\Service\Tag\WidgetChain;
+use Knp\Component\Pager\Paginator;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -15,10 +17,12 @@ class DefaultController extends Controller{
 
 
     private $em;
+    private $paginator;
 
-    public function __construct(EntityManagerInterface $em)
+    public function __construct(EntityManagerInterface $em, PaginatorInterface $paginator)
     {
         $this->em = $em;
+        $this->paginator = $paginator;
     }
 
     /**
@@ -33,8 +37,22 @@ class DefaultController extends Controller{
         }
 
 
-        return $this->render('Frontend/Default/homepage.html.twig', [
-            'plays' => $this->em->getRepository(Play::class)->findAll()
+
+        $pagination = $this->paginator->paginate(
+            $this->em->getRepository(Play::class)->createQueryBuilder('p')->orderBy('p.name')->getQuery(),
+            $request->query->getInt('page', 1),
+            24
+        );
+        return $this->render('Frontend/Default/homepage.html.twig', [ 'page' => $pagination ]);
+    }
+
+    /**
+     * @Route("/show/{id}", name="play")
+     */
+    public function play(Request $request)
+    {
+        return $this->render('Frontend/Default/show.html.twig', [
+            'play' => $this->em->getRepository(Play::class)->find($request->get('id'))
         ]);
     }
 

@@ -1,7 +1,17 @@
+html {
+  height:100%;
+}
+
 body{
   //background-image: url("/images/bg.png");
   background-color: #fff;
+  height:100%;
 }
+
+#content-section9{
+  min-height:calc(100% - 375px)
+}
+
 
 body header #headerband{
   background-image: url("/images/bg-header.png");
@@ -25,8 +35,6 @@ body footer #footerband{
   //margin-bottom:5px;
   color:#fff;
   //padding:10px;
-  position: absolute;
-  bottom: 0;
   width:100%;
 }
 
@@ -41,11 +49,20 @@ body footer #footerband ul{
   min-height:300px;
 }
 
+.vignette{
+  box-shadow: 1px 1px 12px #555;
+}
+
 .right-bar{
   background-color: #fff;
   padding:5px;
   border-left:1px solid #000;
   min-height:300px;
+}
+
+.nopadding {
+  padding: 0 !important;
+  margin: 0 !important;
 }
 
 #content-section9 .container .row .all-body{
@@ -88,4 +105,11 @@ body footer #footerband ul{
 
 .v-r-bar{
   border-right:1px solid #fff;
+}
+
+.ui-effects-transfer {
+  border: 1px dotted black;
+  vertical-align: middle;
+  background-color: #fff;
+  display: table-cell;
 }

@@ -80,8 +80,26 @@
     "fig/link-util": {
         "version": "1.0.0"
     },
+    "imagine/imagine": {
+        "version": "v0.7.1"
+    },
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
+    },
+    "knplabs/knp-components": {
+        "version": "v1.3.10"
+    },
+    "knplabs/knp-paginator-bundle": {
+        "version": "v2.8.0"
+    },
+    "liip/imagine-bundle": {
+        "version": "1.8",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "1.8",
+            "ref": "523b4b0cfb88dc8637cb56e427e6be7718bdce32"
+        }
     },
     "markbaker/complex": {
         "version": "1.4.6"
@@ -361,6 +379,9 @@
             "version": "2.5",
             "ref": "3db029c03e452b4a23f7fc45cec7c922c2247eb8"
         }
+    },
+    "symfony/templating": {
+        "version": "v4.1.7"
     },
     "symfony/translation": {
         "version": "3.3",

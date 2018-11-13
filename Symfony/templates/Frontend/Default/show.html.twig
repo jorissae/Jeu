@@ -1,0 +1,70 @@
+{% extends 'Frontend/base.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-12">
+            <h1>{%  if play.logo %}<img src="{{ ('/uploads/playlogo/' ~play.logo)|imagine_filter('h_logo_play') }}"/>{%  else %}{{ play.name }}{%  endif %}<div class="pull-right"><img style="height:40px;" src="/uploads/editor/{{ play.editor.logo }}"/></div></h1>
+            <hr/>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="pull-left">
+            {%  if play.pictur %}
+                <img src="{{ ('/uploads/play/' ~play.pictur)|imagine_filter('home_play') }}" class=" vignette"/>
+            {%  else %}
+                <img src="{{ '/images/logo.png'|imagine_filter('home_play') }}" class=" vignette"/>
+            {%  endif %}
+            </div>
+            <div class="pull-left" style="padding-left:10px;">
+                <label>Nombre de joueurs :</label>  {{ play.nbPlayer }}<br/>
+                <label>A partir de : </label> {{ play.age }} ans<br/>
+                <label>Editeur : </label> {{ play.editor }}<br/>
+                <label>Note : </label> {{ play.note }}/3<br/>
+                <label>Durée : </label>&nbsp;<span class="label label-primary"><i class="fas fa-hourglass-half"></i>&nbsp;{{  play.duration }}</span><br/>
+                <label>Genres : </label> {%  for genre in play.genres %}<span class="label label-success">{{ genre }}</span>&nbsp;{%  else %}<span class="label label-success">Aucun</span>&nbsp;{%  endfor %}
+            </div>
+            <div class="pull-left" style="padding-left:10px;">
+                <label>Nombre de joueurs conseillés :</label>  {{ play.nbPlayerAdvisor }}<br/>
+                <br/><br/><br/><br/><br/>
+                <label>Thèmes : </label> {%  for theme in play.themes %}<span class="label label-warning">{{ theme }}</span>&nbsp;{%  else %}<span class="label label-warning">Aucun</span>&nbsp;{%  endfor %}<br/>
+             </div>
+        </div>
+    </div>
+
+    <div class="row" style="margin-bottom:20px;">
+        <div class="col-md-12">
+            <hr/>
+            <h3><i class="fas fa-thumbtack"></i>&nbsp;Description du jeu :</h3>
+            {{ play.description|raw }}
+        </div>
+    </div>
+{%  endblock %}
+
+{% block rightbar %}
+    {%  set columns = ['A','B','C','D','E'] %}
+    {%  set lines = 1..7 %}
+    <table class="table">
+        <tr><td width="10%"></td>{%  for  hc in columns %}<th style="text-align:center;" width="18%">{{ hc }}</th>{%  endfor %}</tr>
+        {%  for l in lines %}
+            <tr>
+                <th style="vertical-align:middle; text-align:right;">{{ l }}</th>
+                {%  for  c in columns %}
+                    {%  if play.position == c~l %}
+                        <td style="height:70px; border:1px solid black; {%  if not play.logo %}background-color:black;{%  endif %} color:#fff; vertical-align:middle; text-align:center; font-weight:bolder;">
+                            {%  if play.logo %}
+                                <img style="width:100%; padding-top:7px;" src="/uploads/playlogo/{{ play.logo }}"/>
+                            {%  else %}
+                                <i class="fas fa-map-marker-alt"></i>&nbsp;{{ c~l }}<br/><i style="font-size:8px;">Je suis ici</i>
+                            {%  endif %}
+                        </td>
+                    {%  else  %}
+                        <td style="height:70px; border:1px solid black;"></td>
+                    {%  endif %}
+
+                {%  endfor %}
+            </tr>
+        {%  endfor %}
+    </table>
+{%  endblock %}
