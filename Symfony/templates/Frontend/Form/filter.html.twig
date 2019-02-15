@@ -3,13 +3,20 @@
 {%  block filter_widget %}
 <div class="form-inline">
     <div class="input-group">
-        <span class="input-group-addon"><i class="fas fa-robot"></i></span>
-        {{ form_widget(form.nb_players) }}
+        <span class="input-group-addon"><i class="fab fa-sistrix"></i></span>
+        {{ form_widget(form.name) }}
     </div>
     <div class="input-group">
-        <span class="input-group-addon"><i class="fas fa-hourglass-half"></i></span>
+        <span class="input-group-addon"><i class="fas fa-robot"></i></span>
+        {{ form_widget(form.nb_players) }}
+        <span class="input-group-addon">{{ form_widget(form.advisor) }}</span>
+    </div>
+    <div class="input-group">
+        <span class="input-group-addon"><i class="fas fa-hourglass-half" title="+/- 5 min"></i></span>
         {{ form_widget(form.time) }}
     </div>
-    <button  class="btn btn-success"><i class="fas fa-gamepad"></i>&nbsp;Chercher</button>
+    {{ form_rest(form) }}
+    <button  name="search" class="btn btn-success"><i class="fas fa-gamepad"></i>&nbsp;Chercher</button>
+    <button  name="erase" class="btn btn-success" title="Tout effacer"><i class="fas fa-eraser"></i></button>
 </div>
 {%  endblock %}

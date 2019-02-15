@@ -16,15 +16,15 @@ class EditorConfigurator extends AbstractDoctrineORMConfigurator
 {
 
     const ENTITY_CLASS_NAME = Editor::class;
-    const TITLE = 'Gestion des éditeurs!';
+    const TITLE = 'Gestion des éditeurs';
 
     public function buildAll(){
 
-        $this->addIndexComponent(CPNT\Action::class,['actions'=>[CPNT\Action::ADD,CPNT\Action::SCREEN('chez bibi', 'bibi')]]);
+        $this->addIndexComponent(CPNT\Action::class,['actions'=>[CPNT\Action::ADD]]);//,CPNT\Action::SCREEN('chez bibi', 'bibi')]]);
         $this->addIndexComponent(CPNT\Filter::class,[]);
         $this->addIndexComponent(CPNT\ListItems::class,  [
             'fields'=> ['logo','name'],
-            'entity_actions' => [CPNT\ListItems::ENTITY_ACTION_EDIT, CPNT\ListItems::ENTITY_ACTION_DELETE, CPNT\ListItems::ENTITY_ACTION_SCREEN('chez bibi', 'bibi')],
+            'entity_actions' => [CPNT\ListItems::ENTITY_ACTION_EDIT, CPNT\ListItems::ENTITY_ACTION_DELETE], //, CPNT\ListItems::ENTITY_ACTION_SCREEN('chez bibi', 'bibi')],
             'bulk_actions' => [CPNT\ListItems::BULK_ACTION_DELETE]
         ]);
         $this->addComponent(CPNT\ListItems::class,  [

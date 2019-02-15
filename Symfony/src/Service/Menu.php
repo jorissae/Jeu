@@ -4,40 +4,36 @@ namespace App\Service;
 
 use Idk\LegoBundle\Lib\LayoutItem\LabelItem;
 use Idk\LegoBundle\Lib\LayoutItem\MenuItem;
-use Idk\LegoBundle\Service\LegoMenuInterface;
-use Symfony\Component\Yaml\Yaml;
-use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
+use Idk\LegoBundle\Lib\Path;
+use Idk\LegoBundle\Service\Menu as Base;
 
-class Menu implements LegoMenuInterface
+class Menu extends  Base
 {
 
-    private $em;
-    private $security;
 
-    public function __construct(EntityManagerInterface $em, TokenStorageInterface $security) {
-        $this->em = $em;
-        $this->security = $security;
-    }
-
-    public function search(){
-        return false;
-    }
-
-    public function getTemplate(){
-        return '@IdkLegoB/Layout/_menu.html.twig';
-    }
 
     public function getItems(){
         $return = [];
-        $return[] = new MenuItem('ADMIN JEU', ['type'=>MenuItem::TYPE_HEADER]);
+        $return[] = new MenuItem('CHEZ LESLIE', ['type'=>MenuItem::TYPE_HEADER]);
         $return[] = new MenuItem('Dashboard', [
             'icon' => 'dashboard',
-            'route' => 'homepage',
-            'labels'=> [new LabelItem(5, ['css_class'=>'bg-red'])],
-            'children' => [new MenuItem('index',['route'=>'homepage', 'icon'=>'circle-o'])]
+            'path' => new Path('idk_lego_dashboard'),
+            //'labels'=> [new LabelItem(5, ['css_class'=>'bg-red'])],
+            //'children' => [new MenuItem('index',['path'=>new Path('idk_lego_dashboard'), 'icon'=>'circle-o'])]
         ]);
-        $return[] = new MenuItem('Jeux', ['route'=>'app_backend_jeulego_index', 'icon'=>'play']);
+
+        $return[] = new MenuItem('Jeu', ['path' => new Path('app_backend_playlego_index'), 'icon' => 'gamepad']);
+        $return[] = new MenuItem('Collection', ['path' => new Path('app_backend_collectionlego_index'), 'icon' => 'gamepad']);
+        $return[] = new MenuItem('Joueur', ['path' => new Path('app_backend_playerlego_index'), 'icon' => 'gamepad']);
+        $return[] = new MenuItem('Éditeur', ['path' => new Path('app_backend_editorlego_index'),'icon' => 'gamepad']);
+        $return[] = new MenuItem('Genre', ['path' => new Path('lego_index', ['entity'=>'genre']),'icon' => 'gamepad']);
+        $return[] = new MenuItem('Thème', ['path' => new Path('lego_index', ['entity'=>'theme']),'icon' => 'gamepad']);
+        $return[] = new MenuItem('Durée', ['path' => new Path('lego_index', ['entity'=>'duration']),'icon' => 'gamepad']);
+        $return[] = new MenuItem('Commentaire', ['path' => new Path('app_backend_playcommentlego_index'), 'icon'=>'gamepad']);
+
+        $return[] = new MenuItem('Administration', ['type'=>MenuItem::TYPE_HEADER]);
+        $return[] = new MenuItem('Utilisateur', ['path' => new Path('lego_index', ['entity'=>'user']), 'icon' => 'users']);
+
         return $return;
     }
 

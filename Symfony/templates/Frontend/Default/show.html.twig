@@ -3,7 +3,11 @@
 {% block body %}
     <div class="row">
         <div class="col-md-12">
-            <h1>{%  if play.logo %}<img src="{{ ('/uploads/playlogo/' ~play.logo)|imagine_filter('h_logo_play') }}"/>{%  else %}{{ play.name }}{%  endif %}<div class="pull-right"><img style="height:40px;" src="/uploads/editor/{{ play.editor.logo }}"/></div></h1>
+            <h1>{%  if play.logo %}<img src="{{ ('/uploads/playlogo/' ~play.logo)|imagine_filter('h_logo_play') }}"/>{%  else %}{{ play.name }}{%  endif %}
+                <div class="pull-right">
+                    {% if play.editor %}<img style="height:50px;" src="/uploads/editor/{{ play.editor.logo }}"/>{%  endif %}
+                </div>
+            </h1>
             <hr/>
 
         </div>
@@ -19,52 +23,79 @@
             </div>
             <div class="pull-left" style="padding-left:10px;">
                 <label>Nombre de joueurs :</label>  {{ play.nbPlayer }}<br/>
-                <label>A partir de : </label> {{ play.age }} ans<br/>
+                <label>À partir de : </label> {{ play.age }} ans<br/>
                 <label>Editeur : </label> {{ play.editor }}<br/>
-                <label>Note : </label> {{ play.note }}/3<br/>
+                <label>Note : </label> <span>{% include 'Frontend/Default/_note.html.twig' with {'note': play.noteAverageAll} %}</span><br/>
                 <label>Durée : </label>&nbsp;<span class="label label-primary"><i class="fas fa-hourglass-half"></i>&nbsp;{{  play.duration }}</span><br/>
                 <label>Genres : </label> {%  for genre in play.genres %}<span class="label label-success">{{ genre }}</span>&nbsp;{%  else %}<span class="label label-success">Aucun</span>&nbsp;{%  endfor %}
             </div>
             <div class="pull-left" style="padding-left:10px;">
                 <label>Nombre de joueurs conseillés :</label>  {{ play.nbPlayerAdvisor }}<br/>
-                <br/><br/><br/><br/><br/>
+                {% if play.requirement %}<label>Nécessite : </label> <a href="{{ path('play', {'id': play.requirement.id}) }}">{{ play.requirement.name }}</a><br/>{%  else %}<br/>{%  endif %}
+                <br/><br/><br/><br/>
                 <label>Thèmes : </label> {%  for theme in play.themes %}<span class="label label-warning">{{ theme }}</span>&nbsp;{%  else %}<span class="label label-warning">Aucun</span>&nbsp;{%  endfor %}<br/>
-             </div>
+            </div>
+
         </div>
     </div>
 
-    <div class="row" style="margin-bottom:20px;">
+    <div class="row">
         <div class="col-md-12">
             <hr/>
             <h3><i class="fas fa-thumbtack"></i>&nbsp;Description du jeu :</h3>
             {{ play.description|raw }}
+            <hr/>
+            <h3><i class="fas fa-clipboard-list"></i>&nbsp;Extensions du jeu :</h3>
+            <ul style="margin: 0px; list-style-type: none;">
+            {%  for ext in play.extensions %}
+                <li><a href="{{ path('play', {'id': ext.id}) }}"><i class="fas fa-link"></i>&nbsp;{{ ext.name }}</a></li>
+                {%  for e in ext.extensions %}
+                    <li><a href="{{ path('play', {'id': e.id}) }}"><i class="fa fa-link"></i>&nbsp;{{ e.name }}</a> (de {{ ext.name }})</li>
+                {%  endfor %}
+            {%  else %}
+                Aucune extension
+            {%  endfor %}
+            </ul>
         </div>
+    </div>
+
+    <div class="row" >
+        <div class="col-md-12"><hr/>
+            <h3><i class="fas fa-save"></i>&nbsp;Fichiers :</h3>
+            {{ lgo_list_attachment(play, {"icon": "far fa-file"}) }}
+        </div>
+    </div>
+
+
+    <div class="row" style="margin-bottom:20px;">
+
+            <div class="col-md-12"><hr/>
+                <h3><i class="fab fa-rocketchat"></i>&nbsp;Note et avis des joueurs :</h3>
+            </div>
+            {%  for comment in play.playComments|merge(play.players) %}
+            <div class="col-md-4">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <i class="fas fa-skull"></i>
+                        <strong>{{ comment.player }}</strong> le {{ comment.updatedAt|date('d/m/Y') }}
+                        <div class="pull-right">
+                            {% include 'Frontend/Default/_note.html.twig' with {'note': comment.note} %}
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        {{ comment.message|raw }}
+                    </div>
+                </div>
+            </div>
+            {% else %}
+                <div class="col-md-12"><ul>Aucun commentaire</ul></div>
+            {%  endfor %}
     </div>
 {%  endblock %}
 
 {% block rightbar %}
-    {%  set columns = ['A','B','C','D','E'] %}
-    {%  set lines = 1..7 %}
-    <table class="table">
-        <tr><td width="10%"></td>{%  for  hc in columns %}<th style="text-align:center;" width="18%">{{ hc }}</th>{%  endfor %}</tr>
-        {%  for l in lines %}
-            <tr>
-                <th style="vertical-align:middle; text-align:right;">{{ l }}</th>
-                {%  for  c in columns %}
-                    {%  if play.position == c~l %}
-                        <td style="height:70px; border:1px solid black; {%  if not play.logo %}background-color:black;{%  endif %} color:#fff; vertical-align:middle; text-align:center; font-weight:bolder;">
-                            {%  if play.logo %}
-                                <img style="width:100%; padding-top:7px;" src="/uploads/playlogo/{{ play.logo }}"/>
-                            {%  else %}
-                                <i class="fas fa-map-marker-alt"></i>&nbsp;{{ c~l }}<br/><i style="font-size:8px;">Je suis ici</i>
-                            {%  endif %}
-                        </td>
-                    {%  else  %}
-                        <td style="height:70px; border:1px solid black;"></td>
-                    {%  endif %}
-
-                {%  endfor %}
-            </tr>
-        {%  endfor %}
-    </table>
+    {%  if play.video %}
+        {% include 'Frontend/Collection/_video.html.twig' with {'video':play.video} %}
+    {%  endif %}
 {%  endblock %}
+{%  block js %}<script>$('#mainmenu ul li').removeClass('active'); $('#menu-play').addClass('active');</script>{%  endblock %}

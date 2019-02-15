@@ -1,0 +1,9 @@
+{%  if good is not defined %}{%  set good = '#000' %}{%  endif %}
+{%  if bad is not defined %}{%  set bad = '#ccc' %}{%  endif %}
+{%  for i in 1..4 %}
+    {% if note > i-1 and note < i %}
+        <span class="fa fa-star-half-alt" style="color:{{  good }};"></span>
+    {% else %}
+        <span class="fa fa-star" style="color:{%  if note >= i %}{{  good }}{% else %}{{ bad }}{%  endif %};"></span>
+    {%  endif %}
+{%  endfor %}

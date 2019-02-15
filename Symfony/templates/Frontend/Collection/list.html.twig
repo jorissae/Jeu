@@ -1,0 +1,82 @@
+{% extends 'Frontend/Collection/all.html.twig' %}
+
+{%  block title %}
+    {% include 'Frontend/Collection/_title.html.twig' with {'page':page, 'filter':filter, 'txt': 'Liste de mes jeux'} %}
+{%  endblock %}
+
+{% block play_link %}
+<a href="{{  path('collection_play', {'idp': play.id, 'id': collection.id}) }}" class="btn btn-lg btn-primary"><span class="fas fa-shoe-prints"></span>&nbsp;Aller voir !</a>
+{%  endblock %}
+{%  block js %}<script>$('#mainmenu ul li').removeClass('active'); $('#menu-my-play-{{  collection.id }}').addClass('active');</script>{%  endblock %}
+
+
+{%  block vignetteHeader %}
+<div class="panel-heading">
+    <i style="cursor:pointer;" class="fab fa-buromobelexperte action-detect"
+       data-position="{{  play.position }}"
+       data-video="{{ play.video }}"
+       data-name="{{ play.name[:10] }}"
+       data-pictur="{% if play.logo %}{{  ('/uploads/playlogo/'~play.logo)|imagine_filter('logo_play') }}{%  endif %}"
+    ></i>
+    <span title = "{{ play.name }}">
+                    {% if play.name|length > 40 %}
+                        {{ play.name|slice(0, 40) ~ '...'}}
+                    {% else %}
+                        {{ play.name }}
+                    {% endif %}
+                    </span>
+    <div class="pull-right">
+        {% include 'Frontend/Default/_note.html.twig' with {'note': play.noteAverage} %}
+        {%  if play.duration %}<i class="fas fa-hourglass-half"></i>&nbsp;{{ play.duration.duration }}{%  endif %}
+    </div>
+</div>
+{% endblock %}
+
+{% block rightbar %}
+    <script>
+        $('.action-detect').click(function(event){
+            var id = '#' + $(this).attr('data-position');
+            var elm = $( this );
+            elm.transfer( { to: id, duration: 1000 }, function(){
+                $('.position-play').css('background-color','#fff');
+                $('.position-play').css('background-image','none');
+                $('.position-play').html("");
+                if(elm.attr('data-position')) {
+                    if (elm.attr('data-pictur')) {
+                        $(id).html('<img style="width:100%; padding-top:7px;" src="' + elm.attr('data-pictur') + '"/>');
+                    } else {
+                        $(id).css('background-color', '#000');
+                        $(id).html('<i class="fas fa-map-marker-alt"></i>&nbsp;' + elm.attr('data-position') + '<br/><i style="font-size:8px;">Je suis ici</i>');
+                    }
+                }
+            });
+            if ($(this).attr('data-pictur')) {
+                $('.ui-effects-transfer').html('<img style="width:100%;" src="' + elm.attr('data-pictur') + '"/>');
+            }
+        });
+        var moveByScroll = function(scroll) {
+            let top = scroll - 332;
+            let max = $('#list-jeux').height() - 450;
+            if (top > 0 && top < max) {
+                $('#table-jeux').css('margin-top', top);
+            }
+        }
+        $(window).scroll(function(){
+            moveByScroll($(this).scrollTop());
+        });
+        moveByScroll(window.scrollY);
+    </script>
+    {%  set columns = ['A','B','C','D','E'] %}
+    {%  set lines = 1..7 %}
+    <table id="table-jeux" class="table">
+        <tr><td width="10%"></td>{%  for  hc in columns %}<th style="text-align:center;" width="18%">{{ hc }}</th>{%  endfor %}</tr>
+        {%  for l in lines %}
+            <tr>
+                <th style="vertical-align:middle; text-align:right;">{{ l }}</th>
+                {%  for  c in columns %}
+                    <td id="{{ c ~ l }}" class="position-play" style="vertical-align:middle; height:70px; border:1px solid black; font-weight: bolder; text-align:center; color:#fff; "></td>
+                {%  endfor %}
+            </tr>
+        {%  endfor %}
+    </table>
+{%  endblock %}

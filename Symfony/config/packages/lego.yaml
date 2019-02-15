@@ -1,2 +1,3 @@
 idk_lego:
     skin: skin-blue-light
+    service_menu: App\Service\Menu

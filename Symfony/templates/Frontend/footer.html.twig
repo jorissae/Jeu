@@ -5,23 +5,27 @@
         <div class="container-full">
             <div id="footerband">
                 <div class="col-md-3">
-                    <ul>
-                        <li>link 1</li>
+                    <ul style="margin-top:20px;">
+                        <li>{% include 'Frontend/Default/_note.html.twig' with {'note': 0, 'good': '#fff', 'bad': '#555'} %}&nbsp;Jeu qu'on n'aime pas</li>
+                        <li>{% include 'Frontend/Default/_note.html.twig' with {'note': 1, 'good': '#fff', 'bad': '#555'} %}&nbsp;Jeu a joué de temps en temps (sans plus ...)</li>
+                        <li>{% include 'Frontend/Default/_note.html.twig' with {'note': 2, 'good': '#fff', 'bad': '#555'} %}&nbsp;Bon jeu</li>
+                        <li>{% include 'Frontend/Default/_note.html.twig' with {'note': 3, 'good': '#fff', 'bad': '#555'} %}&nbsp;Très bon jeu</li>
+                        <li>{% include 'Frontend/Default/_note.html.twig' with {'note': 4, 'good': '#fff', 'bad': '#555'} %}&nbsp;Jeu magnifique à jouer et rejouer</li>
                     </ul>
                 </div>
                 <div class="col-md-3 v-bar">
                     <ul>
-                        <li>link 1</li>
+                        <li></li>
                     </ul>
                 </div>
                 <div class="col-md-3 v-r-bar">
                     <ul>
-                        <li>link 1</li>
+                        <li></li>
                     </ul>
                 </div>
                 <div class="col-md-3">
-                    <ul>
-                        <li>link 1</li>
+                    <ul style="margin-top:20px;">
+                        <li><a href="{{ path('contact') }}">Contact</a></li>
                     </ul>
                 </div>
             </div>

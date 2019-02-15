@@ -2,6 +2,9 @@
 
 namespace App\Repository;
 
+use App\Entity\Collection;
+use Doctrine\ORM\QueryBuilder;
+
 /**
  * JeuRepository
  *
@@ -10,4 +13,31 @@ namespace App\Repository;
  */
 class PlayRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getQueryBuilderByFilter($data, Collection $collection = null): QueryBuilder
+    {
+        $queryBuilder = $this->createQueryBuilder('p')->orderBy('p.name');
+        $parameters = [];
+        if(isset($data['nb_players'])) {
+            if(isset($data['advisor']) && $data['advisor']){
+                $queryBuilder->andWhere('p.nbPlayerAdvisorMin <= :nbPlayer AND p.nbPlayerAdvisorMax >= :nbPlayer');
+            }else {
+                $queryBuilder->andWhere('p.nbPlayerMin <= :nbPlayer AND p.nbPlayerMax >= :nbPlayer');
+            }
+            $parameters['nbPlayer'] =  $data['nb_players'];
+        }
+        if(isset($data['name']) && $data['name']){
+            $queryBuilder->andWhere('p.name LIKE :name');
+            $parameters = array_merge($parameters, ['name'=> '%'.$data['name'].'%']);
+        }
+        if(isset($data['time'])){
+            $queryBuilder->innerJoin('p.duration', 'd')->andWhere('d.duration >= :min AND d.duration <= :max');
+            $parameters = array_merge($parameters, ['min' => $data['time'] - 5, 'max' => $data['time'] + 5]);
+        }
+        if($collection){
+            $queryBuilder->innerJoin('p.collections', 'c')->andWhere('c.id = :collectionid');
+            $parameters['collectionid'] = $collection->getId();
+        }
+        $queryBuilder->setParameters($parameters);
+        return $queryBuilder;
+    }
 }

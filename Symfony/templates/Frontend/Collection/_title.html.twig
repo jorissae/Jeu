@@ -1,0 +1,14 @@
+{%  set pluralizeS = '' %}
+{%  set pluralizeX = '' %}
+{% if  page.getTotalItemCount > 1 %}{%  set pluralizeS = 's' %}{%  set pluralizeX = 'x' %}{%  endif %}
+{%  if filter.name is defined and filter.name  %}
+    Résultat : {{ page.getTotalItemCount }} jeu{{ pluralizeX }} trouvé{{ pluralizeS }}
+{%  else %}
+    {{ txt }}
+    {%  if filter.nb_players is defined and filter.nb_players %}
+        pour {{ filter.nb_players }} joueurs
+        {%  if filter.advisor is defined and filter.advisor%}conseillés{%  endif %}
+    {%  endif %}
+    {%  if filter.time is defined and filter.time %}de {{ filter.time  }} minutes environs{%  endif %}
+    ({{ page.getTotalItemCount }})
+{%  endif %}

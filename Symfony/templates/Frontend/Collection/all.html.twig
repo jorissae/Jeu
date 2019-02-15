@@ -1,0 +1,98 @@
+{% extends 'Frontend/base.html.twig' %}
+
+{% block body %}
+    <div class="row" >
+        <div class="col-md-12" >
+            <div class="pull-left">
+                <h3 style="text-align:center; font-weight:bolder;">
+                    {%  block title %}
+                        {% include 'Frontend/Collection/_title.html.twig' with {'page':page, 'filter':filter, 'txt': 'Liste des jeux testés'} %}
+                    {%  endblock %}
+                </h3>
+            </div>
+            <div class="navigation pull-right">
+                {{ knp_pagination_render(page) }}
+            </div>
+        </div>
+        <div class="col-md-12"><hr/></div>
+    </div>
+    <div class="row" id="list-jeux">
+        {%  for play in page %}
+            {%  if play.pictur %}
+                {%  set img =  ('/uploads/play/' ~play.pictur)|imagine_filter('home_play') %}
+                {%  set imgraw =  ('/uploads/play/' ~play.pictur) %}
+            {%  else %}
+                {%  set img ='/images/logo.png'|imagine_filter('home_play') %}
+                {%  set imgraw ='/images/logo.png' %}
+            {%  endif %}
+            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3" >
+                <div class="panel panel-info" style="height:205px; overflow: hidden;">
+                    {%  block vignetteHeader %}
+                        <div class="panel-heading">
+                            {%  if play.video %}
+                            <i style="cursor:pointer;" class="fas fa-film action-detect"
+                               data-position="{{  play.position }}"
+                               data-video="{{ play.video }}"
+                               data-name="{{ play.name[:10] }}"
+                               data-pictur="{% if play.logo %}{{  ('/uploads/playlogo/'~play.logo)|imagine_filter('logo_play') }}{%  endif %}"
+                            ></i>
+                            {%  endif %}
+                            <span title = "{{ play.name }}">
+                        {% if play.name|length > 40 %}
+                            {{ play.name|slice(0, 40) ~ '...'}}
+                        {% else %}
+                            {{ play.name }}
+                        {% endif %}
+                        </span>
+                            <div class="pull-right">
+                                {% include 'Frontend/Default/_note.html.twig' with {'note': play.noteAverageAll} %}
+                                &nbsp;{%  if play.duration %}<i class="fas fa-hourglass-half"></i>&nbsp;{{ play.duration.duration }}{%  endif %}
+                            </div>
+                        </div>
+                    {%  endblock %}
+                    <div class="panel-body" >
+                        <div style="position:relative; background-color:rgba(0,0,0,0);">
+                            <div style="opacity: 0.3; position:absolute; width:100%; height:205px; top:-15px; left:-15px; background-image: url('{{ img }}'); background-position: 25%; background-repeat: no-repeat;"></div>
+                            <div style="position:relative; z-index:2;">
+                                <div class="pull-left" style="width:40%; height: 10em; line-height: 10em; white-space: nowrap;">
+                                    <img src="{{ img }}" class=" vignette"/>
+                                </div>
+                                <div class="pull-left" style="padding-left:10px; width:60%;">
+                                    <label>Nombre de joueurs :</label>  {{ play.nbPlayer }}<br/>
+                                    <label>À partir de : </label> {{ play.age }} ans<br/>
+                                    {%  for genre in play.genres %}<span class="label label-success">{{ genre }}</span>&nbsp;{%  else %}<span class="label label-success">Aucun</span>&nbsp;{%  endfor %}<br/>
+                                    <div style="text-align:center; margin-top:10px;">
+                                        {% block play_link %}
+                                        <a href="{{  path('play', {'id': play.id}) }}" class="btn btn-lg btn-primary"><span class="fas fa-shoe-prints"></span>&nbsp;Aller voir !</a>
+                                        {%  endblock %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        {%  endfor %}
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="navigation pull-right">
+                {{ knp_pagination_render(page) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block rightbar %}
+    {% include 'Frontend/Collection/_video.html.twig' %}
+    <script>
+        $('.action-detect').click(function(event){
+            let idyt = $(this).attr('data-video');
+            if(idyt) {
+                $('#yt-video').show();
+                $('#yt-video').attr('src', 'https://www.youtube.com/embed/' + idyt);
+            }
+        });
+    </script>
+{%  endblock %}
+{%  block js %}<script>$('#mainmenu ul li').removeClass('active'); $('#menu-play').addClass('active');</script>{%  endblock %}

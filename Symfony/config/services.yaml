@@ -28,7 +28,7 @@ services:
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
 
-    #Idk\LegoBundle\Service\LegoMenuInterface: '@App\Service\Menu'
+    Idk\LegoBundle\Service\LegoMenuInterface: '@App\Service\Menu'
     Idk\LegoBundle\Service\LegoHeaderInterface: '@App\Service\Header'
     Idk\LegoBundle\Service\LegoFooterInterface: '@App\Service\Footer'
 
@@ -36,3 +36,8 @@ services:
         tags:
             - { name: kernel.event_listener, event: idk.lego.move_components, method: updateComponents }
             - { name: kernel.event_listener, event: idk.lego.move_widgets, method: updateWidgets }
+
+    App\Listener\PrePersistAdd:
+        tags:
+            - { name: kernel.event_listener, event: idk.lego.pre_persist_add_entity, method: prePersistAdd }
+            - { name: kernel.event_listener, event: idk.lego.pre_persist_edit_entity, method: prePersistAdd }

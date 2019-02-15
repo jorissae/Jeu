@@ -9,4 +9,4 @@ lego_media:
 lego_security:
     resource: 'Idk\LegoBundle\Controller\SecurityController'
     type:     annotation
-    prefix:   /admin
+    prefix:   /
