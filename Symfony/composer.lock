@@ -2427,7 +2427,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/prestigejo/lego-media-bundle.git",
-                "reference": "2a06fb7a49ba2a82ee5744f3c1aaab51727c1503"
+                "reference": "9fcecb8348bcea58af63c04a3e98cad34a48109b"
             },
             "type": "symfony-bundle",
             "extra": {
@@ -2455,7 +2455,7 @@
                 "Lego",
                 "bundle"
             ],
-            "time": "2019-02-15T20:04:00+00:00"
+            "time": "2019-02-16T14:06:47+00:00"
         },
         {
             "name": "prestigejo/legobundle",
