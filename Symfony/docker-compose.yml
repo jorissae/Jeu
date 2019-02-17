@@ -1,0 +1,29 @@
+version: '3.2'
+
+services:
+  database:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: pass
+      MYSQL_DATABASE: sf4
+    volumes:
+      - database:/var/lib/mysql
+
+  symfony:
+    build: .
+    image: registry.2le.net/2le/geostage
+    working_dir: /var/www/html
+    volumes:
+      - ./:/var/www/html/
+    ports:
+      - 8813:80
+      
+  pma:
+    image: phpmyadmin/phpmyadmin
+    links:
+      - database:db
+    ports:
+      - 8814:80
+
+volumes:
+  database: ~
