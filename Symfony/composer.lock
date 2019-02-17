@@ -2007,16 +2007,16 @@
         },
         {
             "name": "nikic/php-parser",
-            "version": "v4.2.0",
+            "version": "v4.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "594bcae1fc0bccd3993d2f0d61a018e26ac2865a"
+                "reference": "5221f49a608808c1e4d436df32884cbc1b821ac0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/594bcae1fc0bccd3993d2f0d61a018e26ac2865a",
-                "reference": "594bcae1fc0bccd3993d2f0d61a018e26ac2865a",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/5221f49a608808c1e4d436df32884cbc1b821ac0",
+                "reference": "5221f49a608808c1e4d436df32884cbc1b821ac0",
                 "shasum": ""
             },
             "require": {
@@ -2054,7 +2054,7 @@
                 "parser",
                 "php"
             ],
-            "time": "2019-01-12T16:31:37+00:00"
+            "time": "2019-02-16T20:54:15+00:00"
         },
         {
             "name": "ocramius/package-versions",
@@ -2464,7 +2464,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/prestigejo/lego-bundle.git",
-                "reference": "11c799d84932f2ee635588f00ab87ab7e6d51864"
+                "reference": "e655445e18cb445aa36472bb42fe02967589fafc"
             },
             "require": {
                 "doctrine/doctrine-bundle": "^1.6",
@@ -2506,7 +2506,7 @@
                 "Lego",
                 "bundle"
             ],
-            "time": "2019-02-15T20:02:37+00:00"
+            "time": "2019-02-16T14:36:48+00:00"
         },
         {
             "name": "psr/cache",

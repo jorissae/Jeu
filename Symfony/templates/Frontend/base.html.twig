@@ -24,15 +24,15 @@
 
                     <div id="mainmenu" class="collapse navbar-collapse">
                         <ul class="nav navbar-nav">
-                            {%  if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
                             <li id="menu-play"><a href="{{ path('homepage') }}"><i class="fas fa-dice"></i>&nbsp;Jeux</a></li>
+                            {%  if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
                                 {% for collection in app.user.collections %}
                                     <li id="menu-my-play-{{ collection.id }}"><a href="{{ path('collection_index', {"id" : collection.id}) }}"><i class="fas fa-dice"></i>&nbsp;Mes jeux</a></li>
                                 {%  endfor %}
                                 <li><a href="{{ path('idk_lego_security_logout') }}"><i class="fas fa-user"></i>&nbsp;Déconnexion</a></li>
 
                             {%  else %}
-                            <li><a href="{{ path('idk_lego_security_login') }}"><i class="fas fa-user"></i>&nbsp;Connexion</a></li>
+                                <li><a href="{{ path('idk_lego_security_login') }}"><i class="fas fa-user"></i>&nbsp;Connexion</a></li>
                             {%  endif %}
                         </ul>
                         {%  if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
@@ -44,6 +44,7 @@
                 </nav>
                 <div class="col-md-9">
                     <div class="body">
+                        {% include 'Frontend/Default/_flash.html.twig' %}
                         {% block body %}{% endblock %}
                     </div>
                 </div>

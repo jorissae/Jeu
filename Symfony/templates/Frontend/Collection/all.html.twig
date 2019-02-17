@@ -37,6 +37,11 @@
                                data-pictur="{% if play.logo %}{{  ('/uploads/playlogo/'~play.logo)|imagine_filter('logo_play') }}{%  endif %}"
                             ></i>
                             {%  endif %}
+                            {%  if play.id in app.session.get('playfav') %}
+                                <a href="{{ path('app_frontend_default_unpin', {'id':play.id}) }}" class="fas fa-flag"></a>
+                            {% else %}
+                                <a href="{{ path('app_frontend_default_pin', {'id':play.id}) }}" class="far fa-flag"></a>
+                            {%  endif %}
                             <span title = "{{ play.name }}">
                         {% if play.name|length > 40 %}
                             {{ play.name|slice(0, 40) ~ '...'}}
@@ -85,6 +90,7 @@
 {% endblock %}
 {% block rightbar %}
     {% include 'Frontend/Collection/_video.html.twig' %}
+    {{ render(controller('App\\Controller\\Frontend\\DefaultController::favoris')) }}
     <script>
         $('.action-detect').click(function(event){
             let idyt = $(this).attr('data-video');

@@ -40,4 +40,8 @@ class PlayRepository extends \Doctrine\ORM\EntityRepository
         $queryBuilder->setParameters($parameters);
         return $queryBuilder;
     }
+
+    public function findIn(array $ids){
+        return $this->createQueryBuilder('p')->where('p.id IN (:ids)')->setParameter('ids',$ids)->getQuery()->execute();
+    }
 }

@@ -10,6 +10,8 @@ use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\HttpFoundation\Session\SessionBagInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -60,6 +62,34 @@ class DefaultController extends Controller{
     }
 
     /**
+     * @Route("/pin/{id}")
+     */
+    public function pin(Request $request ,Play $play){
+        $session = $request->getSession();
+        $playfav = $session->get('playfav', []);
+        if(!isset($playfav[$play->getId()])){
+            $playfav[$play->getId()] = $play->getId();
+        }
+        $session->set('playfav', $playfav);
+        $this->addFlash('notice', 'Jeu '. $play->getName() .' ajouté aux favoris');
+        return $this->redirect($request->headers->get('referer'));
+    }
+
+    /**
+     * @Route("/unpin/{id}")
+     */
+    public function unpin(Request $request ,Play $play){
+        $session = $request->getSession();
+        $playfav = $session->get('playfav', []);
+        if(isset($playfav[$play->getId()])){
+            unset($playfav[$play->getId()]);
+        }
+        $session->set('playfav', $playfav);
+        $this->addFlash('notice', 'Jeu '. $play->getName() .' supprimé des favoris');
+        return $this->redirect($request->headers->get('referer'));
+    }
+
+    /**
      * @Route("/show/{id}", name="play")
      */
     public function play(Request $request)
@@ -95,5 +125,11 @@ class DefaultController extends Controller{
     public function filter(Request $request){
         $form = $this->createForm(PlayFilterType::class,  $request->getSession()->get('filter', []));
         return $this->render('Frontend/Default/_filter.html.twig', ['form' => $form->createView()]);
+    }
+
+    public function favoris(Request $request){
+        return $this->render('Frontend/Default/_favoris.html.twig' , [
+            'plays' => $this->em->getRepository(Play::class)->findIn($request->getSession()->get('playfav', []))
+        ]);
     }
 }

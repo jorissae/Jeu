@@ -1,0 +1,25 @@
+{%  if plays|length %}
+<strong><i class="fas fa-flag"></i> Liste de jeux "flaggé" (cliquer sur <i class="far fa-flag"></i>)</strong><br/>
+<ul class="list-group">
+{% for play in plays %}
+    {%  if play.pictur %}
+        {%  set img =  ('/uploads/play/' ~play.pictur)|imagine_filter('home_play') %}
+    {%  else %}
+        {%  set img ='/images/logo.png'|imagine_filter('home_play') %}
+    {%  endif %}
+    <li class="list-group-item">
+            <div class="pull-left">
+                <a style="height:50px" href="{{  path('app_frontend_default_unpin', {'id':play.id}) }}"><i class="fa fa-trash"></i></a>&nbsp;
+                <a style="height:50px" href="{{  path('play', {'id':play.id}) }}"><i class="fa fa-eye"></i> {{ play.name }}</a><br/>
+                <label>Nombre de joueurs :</label>  {{ play.nbPlayer }}<br/>
+                <label>À partir de : </label> {{ play.age }} ans
+            </div>
+            <img class="pull-right"  style="height:50px" src="{{ img }}"/>
+            {% if play.logo %}<img class="pull-right"  src="{{  ('/uploads/playlogo/'~play.logo)|imagine_filter('logo_play_fav') }}"/>{%  endif %}
+            <img class="pull-right" style="height:50px;" src="/uploads/editor/{{ play.editor.logo }}"/>
+
+        <div style="clear: both;"></div>
+    </li>
+{%  endfor %}
+</ul>
+{%  endif %}
