@@ -76,8 +76,8 @@ class DefaultController extends Controller{
     }
 
     /**
-     * @Route("/unpin/{id}")
-     */
+ * @Route("/unpin/{id}")
+ */
     public function unpin(Request $request ,Play $play){
         $session = $request->getSession();
         $playfav = $session->get('playfav', []);
@@ -86,6 +86,16 @@ class DefaultController extends Controller{
         }
         $session->set('playfav', $playfav);
         $this->addFlash('notice', 'Jeu '. $play->getName() .' supprimé des favoris');
+        return $this->redirect($request->headers->get('referer'));
+    }
+
+    /**
+     * @Route("/unpinall")
+     */
+    public function unpinall(Request $request){
+        $session = $request->getSession();
+        $session->set('playfav', []);
+        $this->addFlash('notice', 'Liste vidé');
         return $this->redirect($request->headers->get('referer'));
     }
 

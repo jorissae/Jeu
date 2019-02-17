@@ -1,5 +1,5 @@
 {%  if plays|length %}
-<strong><i class="fas fa-flag"></i> Liste de jeux "flaggé" (cliquer sur <i class="far fa-flag"></i>)</strong><br/>
+<strong><i class="fas fa-flag"></i> Liste de jeux "flaggé" (cliquer sur <i class="far fa-flag"></i>)</strong> | <a href="{{ path('app_frontend_default_unpinall') }}">Tout vider</a><br/>
 <ul class="list-group">
 {% for play in plays %}
     {%  if play.pictur %}
