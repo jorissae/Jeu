@@ -1,5 +1,5 @@
 {%  if plays|length %}
-<strong><i class="fas fa-flag"></i> Liste de jeux "flaggé" (cliquer sur <i class="far fa-flag"></i>)</strong><br/>
+<strong><i class="fas fa-flag"></i> Liste de jeux "flaggé" (cliquer sur <i class="far fa-flag"></i>)</strong> | <a href="{{ path('app_frontend_default_unpinall') }}">Tout vider</a><br/>
 <ul class="list-group">
 {% for play in plays %}
     {%  if play.pictur %}
@@ -15,8 +15,8 @@
                 <label>À partir de : </label> {{ play.age }} ans
             </div>
             <img class="pull-right"  style="height:50px" src="{{ img }}"/>
-            {% if play.logo %}<img class="pull-right"  src="{{  ('/uploads/playlogo/'~play.logo)|imagine_filter('logo_play_fav') }}"/>{%  endif %}
-            <img class="pull-right" style="height:50px;" src="/uploads/editor/{{ play.editor.logo }}"/>
+        {#{% if play.logo %}<img class="pull-right"  src="{{  ('/uploads/playlogo/'~play.logo)|imagine_filter('logo_play_fav') }}"/>{%  endif %}
+            <img class="pull-right" style="height:50px;" src="/uploads/editor/{{ play.editor.logo }}"/>#}
 
         <div style="clear: both;"></div>
     </li>
