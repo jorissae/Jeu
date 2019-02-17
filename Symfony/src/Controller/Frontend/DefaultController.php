@@ -111,11 +111,11 @@ class DefaultController extends Controller{
         if($form->isSubmitted() && $form->isValid()){
             $data = $form->getData();
             $message = new \Swift_Message('Nouveau message de '. $data['email'], $data['message']);
-            $message->addFrom('jeuanous@leslie.fr');
-            $message->addTo('chez.joris@live.fr');
-            $message->addCc('leslie_1212@hotmail.fr');
+            $message->addFrom($this->getParameter('mailer_from'));
+            $message->addTo($this->getParameter('mailer_to'));
+            $message->addCc($this->getParameter('mailer_to_cc'));
             $mailer->send($message);
-            $this->addFlash('success', 'Message envoyé');
+            $this->addFlash('notice', 'Message envoyé');
         }
         return $this->render('Frontend/Default/contact.html.twig', [
             'form' => $form->createView()
