@@ -1,5 +1,12 @@
 {% extends 'Frontend/base.html.twig' %}
 
+
+{%  form_theme form 'bootstrap_4_layout.html.twig' %}
 {% block body %}
+    <style>
+        textarea{
+            height:400px !important;
+        }
+    </style>
     {{ form(form) }}
 {%  endblock %}

@@ -3,6 +3,9 @@
 parameters:
     locale: 'en'
     testlego: 'lego'
+    mailer_from: '%env(MAILER_FROM)%'
+    mailer_to: '%env(MAILER_TO)%'
+    mailer_to_cc: '%env(MAILER_TO_CC)%'
 
 services:
     # default configuration for services in *this* file
