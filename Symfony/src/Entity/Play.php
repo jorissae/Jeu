@@ -216,7 +216,7 @@ class Play
      * @ORM\ManyToMany(targetEntity="App\Entity\Collection", inversedBy="plays")
      * @Lego\Field(label="Collections", edit_in_place=false)
      * //@Lego\Filter\EntityFilter(table="App\Entity\Collection")
-     * @Lego\Form\EntityForm(class="App\Entity\Collection", multiple=true)
+     * @Lego\Form\EntityForm(class="App\Entity\Collection", multiple=true, by_reference=false)
      */
     private $collections;
 

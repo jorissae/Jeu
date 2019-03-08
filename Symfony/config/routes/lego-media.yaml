@@ -1,0 +1,3 @@
+lego_media:
+    resource: "@IdkLegoMediaBundle/Resources/config/routing/routes.yaml"
+    prefix: /lego/media

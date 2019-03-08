@@ -8,22 +8,25 @@ services:
       MYSQL_DATABASE: sf4
     volumes:
       - database:/var/lib/mysql
+    container_name: database
 
   symfony:
     build: .
-    image: registry.2le.net/2le/geostage
+    image: registry.2le.net/joris/jeu
     working_dir: /var/www/html
     volumes:
       - ./:/var/www/html/
     ports:
-      - 8813:80
+      - 8921:80
+    container_name: symfony
       
   pma:
     image: phpmyadmin/phpmyadmin
     links:
       - database:db
     ports:
-      - 8814:80
+      - 8922:80
+    container_name: pma
 
 volumes:
   database: ~

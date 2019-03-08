@@ -1,5 +1,11 @@
 FROM registry.2le.net/2le/2le:base-php7-apache
 RUN apt-get update;apt-get install -y unoconv
+RUN apt-get update && apt-get install -y \
+        libfreetype6-dev \
+        libjpeg62-turbo-dev \
+        libpng-dev \
+    && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
+    && docker-php-ext-install -j$(nproc) gd
 COPY ./docker/php/php.ini /usr/local/etc/php/
 COPY ./docker/apache/default.conf /etc/apache2/sites-available/000-default.conf
 COPY . /var/www/html/

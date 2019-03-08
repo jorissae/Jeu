@@ -2,10 +2,6 @@ lego:
     resource: "@IdkLegoBundle/Resources/config/routing/routes.yaml"
     prefix: /admin
 
-lego_media:
-    resource: "@IdkLegoMediaBundle/Resources/config/routing/routes.yaml"
-    prefix: /admin/media
-
 lego_security:
     resource: 'Idk\LegoBundle\Controller\SecurityController'
     type:     annotation

@@ -34,7 +34,7 @@ class CollectionController extends Controller{
             $page ?? 1,
             30
         );
-        return $this->render('Frontend/collection/list.html.twig', [
+        return $this->render('Frontend/Collection/list.html.twig', [
             'page' => $pagination,
             'collection' => $collection,
             'filter' => $request->getSession()->get('filter', [])
@@ -46,7 +46,7 @@ class CollectionController extends Controller{
      */
     public function play(Request $request, Collection $collection)
     {
-        return $this->render('Frontend/collection/play.html.twig', [
+        return $this->render('Frontend/Collection/play.html.twig', [
             'play' => $this->em->getRepository(Play::class)->find($request->get('idp')),
             'collection' => $collection
         ]);

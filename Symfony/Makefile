@@ -9,8 +9,8 @@ install:
 start: ## Start the project
 	cp .env.dist .env
 	docker-compose up -d
-	@echo "started on http://127.0.0.1:8813/"
-	@echo "PMA on http://127.0.0.1:8814/"
+	@echo "started on http://127.0.0.1:8921/"
+	@echo "PMA on http://127.0.0.1:8922/"
 
 stop:
 	docker-compose down --remove-orphans
@@ -47,8 +47,8 @@ db:
 	docker-compose exec symfony  bin/console app:import-siecle
 
 build:
-	docker build -t registry.2le.net/2le/geostage .
-	docker push registry.2le.net/2le/geostage
+	docker build -t registry.2le.net/joris/jeu .
+	docker push registry.2le.net/joris/jeu
 
 test:
 	@echo "Use in docker or use make ts!!"
