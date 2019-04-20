@@ -25,7 +25,7 @@ class PlayConfigurator extends AbstractDoctrineORMConfigurator
         $this->addIndexComponent(Attachment::class, []);
 
         $list = $this->addIndexComponent(CPNT\ListItems::class,  [
-            'fields'=> ['name', 'logo', 'position', 'duration', 'genres', 'themes', 'editor', 'collections'],
+            'fields'=> ['name', 'logo', 'duration', 'genres', 'themes', 'editor', 'collections'],
             'can_modify_nb_entity_per_page' => true,
             'entity_per_page' => 20,
             'entity_actions' => [CPNT\ListItems::ENTITY_ACTION_EDIT, CPNT\ListItems::ENTITY_ACTION_DELETE]

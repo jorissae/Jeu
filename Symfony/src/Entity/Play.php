@@ -44,8 +44,6 @@ class Play
      * @var string
      *
      * @ORM\Column(name="position", type="string", length=2, nullable=true)
-     * @Lego\Field(label="Position", edit_in_place=true)
-     * @Lego\Filter\StringFilter()
      */
     private $position;
 
@@ -755,6 +753,7 @@ class Play
 
     public function addCollection(PlayCollection $collection): self
     {
+        if (!$this->collections) $this->collections = new ArrayCollection();
         if ($this->collections && !$this->collections->contains($collection)) {
             $this->collections[] = $collection;
         }
