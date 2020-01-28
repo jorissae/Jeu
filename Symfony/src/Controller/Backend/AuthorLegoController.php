@@ -3,14 +3,15 @@ namespace App\Controller\Backend;
 
 
 use App\Configurator\AuthorConfigurator as Configurator;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Idk\LegoBundle\Controller\AbstractLegoController;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 /**
  * The LEGO controller for Author
  * @Route("/author")
  */
-class AuthorLegoController extends Controller
+class AuthorLegoController extends AbstractLegoController
 {
 
     use \Idk\LegoBundle\Traits\ControllerTrait;

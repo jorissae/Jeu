@@ -1,16 +1,16 @@
 version: '3.2'
 
 services:
-  database:
+  jeux_database:
     image: mysql:5.7
     environment:
       MYSQL_ROOT_PASSWORD: pass
       MYSQL_DATABASE: sf4
     volumes:
       - database:/var/lib/mysql
-    container_name: database
+    container_name: jeux_database
 
-  symfony:
+  jeux_symfony:
     build: .
     image: registry.2le.net/joris/jeu
     working_dir: /var/www/html
@@ -18,15 +18,15 @@ services:
       - ./:/var/www/html/
     ports:
       - 8921:80
-    container_name: symfony
+    container_name: jeux_symfony
       
-  pma:
+  jeux_pma:
     image: phpmyadmin/phpmyadmin
     links:
-      - database:db
+      - jeux_database:db
     ports:
       - 8922:80
-    container_name: pma
+    container_name: jeux_pma
 
 volumes:
   database: ~

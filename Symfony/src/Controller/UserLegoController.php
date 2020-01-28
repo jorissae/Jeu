@@ -3,14 +3,14 @@ namespace App\Controller;
 
 
 use App\Configurator\UserConfigurator as Configurator;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 /**
  * The LEGO controller for User
  * @Route("/user")
  */
-class UserLegoController extends Controller
+class UserLegoController extends AbstractController
 {
 
     use \Idk\LegoBundle\Traits\ControllerTrait;

@@ -3,10 +3,10 @@
 namespace App\Controller\Backend;
 
 use App\Entity\Jeu2;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Idk\LegoBundle\Controller\AbstractLegoController;
+use Symfony\Component\Routing\Annotation\Route;
 use App\Configurator\Jeu2Configurator as Configurator;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Idk\LegoBundle\Traits\ControllerTrait;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -16,7 +16,7 @@ use Symfony\Component\HttpFoundation\Response;
  * The admin list controller for Jeu
  * @Route("/jeu2")
  */
-class Jeu2LegoController extends Controller
+class Jeu2LegoController extends AbstractLegoController
 {
 
     use ControllerTrait;
@@ -26,8 +26,7 @@ class Jeu2LegoController extends Controller
     /**
      * The index action
      *
-     * @Route("/loulou")
-     * @Method({"GET", "POST"})
+     * @Route("/loulou", methods={"GET","POST"})
      */
     public function loulouAction($component, $entity){
         $entity = $this->getDoctrine()->getRepository(Jeu2::class)->find(1);
@@ -38,8 +37,7 @@ class Jeu2LegoController extends Controller
     /**
      * The index action
      *
-     * @Route("/buk")
-     * @Method({"GET", "POST"})
+     * @Route("/buk", methods={"GET","POST"})
      */
     public function bukAction(Request $request){
         foreach($request->get('ids') as $id){
@@ -54,8 +52,7 @@ class Jeu2LegoController extends Controller
     /**
      * The index action
      *
-     * @Route("/test")
-     * @Method({"GET", "POST"})
+     * @Route("/test", methods={"GET","POST"})
      */
     public function testAction(Request $request){
         $entity = $this->getDoctrine()->getRepository(Jeu2::class)->find($request->get('id'));

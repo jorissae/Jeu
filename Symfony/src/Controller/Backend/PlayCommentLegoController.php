@@ -3,14 +3,15 @@ namespace App\Controller\Backend;
 
 
 use App\Configurator\PlayCommentConfigurator as Configurator;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Idk\LegoBundle\Controller\AbstractLegoController;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * The LEGO controller for PlayComment
  * @Route("/playcomment")
  */
-class PlayCommentLegoController extends Controller
+class PlayCommentLegoController extends AbstractLegoController
 {
 
     use \Idk\LegoBundle\Traits\ControllerTrait;

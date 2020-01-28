@@ -113,6 +113,12 @@
 {%  endblock %}
 
 {% block rightbar %}
+    {%  if play.video %}
+        {% include 'Frontend/Collection/_video.html.twig' with {'video':play.video} %}
+    {%  endif %}
+{%  endblock %}
+{#
+{% block rightbar %}
     {%  set columns = ['A','B','C','D','E'] %}
     {%  set lines = 1..7 %}
     <table class="table">
@@ -138,4 +144,5 @@
         {%  endfor %}
     </table>
 {%  endblock %}
+#}
 {%  block js %}<script>$('#mainmenu ul li').removeClass('active'); $('#menu-my-play-{{  collection.id }}').addClass('active');</script>{%  endblock %}

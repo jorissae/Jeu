@@ -3,14 +3,14 @@ namespace App\Controller\Backend;
 
 
 use App\Configurator\CollectionConfigurator as Configurator;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Idk\LegoBundle\Controller\AbstractLegoController;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * The LEGO controller for Collection
  * @Route("/collection")
  */
-class CollectionLegoController extends Controller
+class CollectionLegoController extends AbstractLegoController
 {
 
     use \Idk\LegoBundle\Traits\ControllerTrait;

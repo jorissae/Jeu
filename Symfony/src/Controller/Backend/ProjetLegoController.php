@@ -3,15 +3,16 @@
 namespace App\Controller\Backend;
 
 use App\Configurator\ProjetConfigurator as Configurator;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Idk\LegoBundle\Controller\AbstractLegoController;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Idk\LegoBundle\Traits\ControllerTrait;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * The admin list controller for Jeu
  * @Route("/projet")
  */
-class ProjetLegoController extends Controller
+class ProjetLegoController extends AbstractLegoController
 {
 
     use ControllerTrait;

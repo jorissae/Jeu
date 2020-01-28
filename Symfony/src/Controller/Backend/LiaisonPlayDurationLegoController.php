@@ -3,14 +3,15 @@ namespace App\Controller\Backend;
 
 
 use App\Configurator\LiaisonPlayDurationConfigurator as Configurator;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Idk\LegoBundle\Controller\AbstractLegoController;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 /**
  * The LEGO controller for LiaisonPlayDuration
  * @Route("/liaisonplayduration")
  */
-class LiaisonPlayDurationLegoController extends Controller
+class LiaisonPlayDurationLegoController extends AbstractLegoController
 {
 
     use \Idk\LegoBundle\Traits\ControllerTrait;

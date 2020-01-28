@@ -1,21 +1,17 @@
 <?php
 namespace App\Controller\Frontend;
 
-use App\Entity\Collection;
 use App\Entity\Play;
 use App\Form\ContactType;
 use App\Form\Filter\PlayFilterType;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\Session\Session;
-use Symfony\Component\HttpFoundation\Session\SessionBagInterface;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class DefaultController extends Controller{
+class DefaultController extends AbstractController {
 
 
     private $em;

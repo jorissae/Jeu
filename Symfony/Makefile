@@ -1,33 +1,33 @@
 install:
-	docker-compose build
-	docker-compose up -d
-	docker-compose exec symfony composer install
-	docker-compose exec symfony npm install
-	docker-compose exec symfony bin/console doc:data:create --if-not-exists
-	docker-compose exec symfony bin/console doc:schem:up --force
+	docker-compose -p jeux build
+	docker-compose -p jeux up -d
+	docker-compose -p jeux exec symfony composer install
+	docker-compose -p jeux exec symfony npm install
+	docker-compose -p jeux exec symfony bin/console doc:data:create --if-not-exists
+	docker-compose -p jeux exec symfony bin/console doc:schem:up --force
 
 start: ## Start the project
 	cp .env.dist .env
-	docker-compose up -d
+	docker-compose -p jeux up -d
 	@echo "started on http://127.0.0.1:8921/"
 	@echo "PMA on http://127.0.0.1:8922/"
 
 stop:
-	docker-compose down --remove-orphans
+	docker-compose -p jeux down --remove-orphans
 
 jsroute:
 	php bin/console fos:js-routing:dump
 	mv web/js/fos_js_routes.js public/js/fos_js_routes.js
 
 translate:
-	docker-compose exec symfony  bin/console translation:download
+	docker-compose -p jeux exec symfony  bin/console translation:download
 
 cc:
-	docker-compose exec symfony bin/console cache:clear
+	docker-compose -p jeux exec symfony bin/console cache:clear
 	chmod -R 777 translations/
 
 console:
-	docker-compose exec symfony bash
+	docker-compose -p jeux exec jeux_symfony bash
 
 migrate:
 	@echo "Use in docker !!"
@@ -38,13 +38,13 @@ migrate:
 
 
 build-assets:
-	docker-compose exec symfony  bin/console assets:install --symlink
+	docker-compose -p jeux exec symfony  bin/console assets:install --symlink
 
 db:
-	docker-compose exec symfony  bin/console doc:data:create --if-not-exists
-	docker-compose exec symfony  bin/console doc:schem:up --force
-	docker-compose exec symfony  bin/console app:import-vstage
-	docker-compose exec symfony  bin/console app:import-siecle
+	docker-compose -p jeux exec symfony  bin/console doc:data:create --if-not-exists
+	docker-compose -p jeux exec symfony  bin/console doc:schem:up --force
+	docker-compose -p jeux exec symfony  bin/consolee app:import-vstage
+	docker-compose -p jeux exec symfony  bin/console app:import-siecl
 
 build:
 	docker build -t registry.2le.net/joris/jeu .
@@ -59,11 +59,11 @@ test:
 
 ts:
 	cp phpunit.xml.dist phpunit.xml
-	docker-compose exec symfony ./bin/console doc:schem:up --force
-	docker-compose exec symfony ./bin/phpunit tests/ -v
+	docker-compose -p jeux exec symfony ./bin/console doc:schem:up --force
+	docker-compose -p jeux exec symfony ./bin/phpunit tests/ -v
 
 wp-watch:
-	docker-compose exec symfony ./node_modules/.bin/encore dev --watch
+	docker-compose -p jeux exec jeux_symfony ./node_modules/.bin/encore dev --watch
 
 
 .PHONY: all test run init cc test
