@@ -17,7 +17,10 @@
     "require": {
         "php": "^7.1.3",
         "ext-iconv": "*",
+        "antishov/doctrine-extensions-bundle": "^1.4",
         "gedmo/doctrine-extensions": "^2.4",
+        "knplabs/knp-paginator-bundle": "^5.1",
+        "liip/imagine-bundle": "^2.3",
         "prestigejo/lego-media-bundle": "dev-master",
         "prestigejo/legobundle": "dev-master",
         "sensio/framework-extra-bundle": "^5.1",

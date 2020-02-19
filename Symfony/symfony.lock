@@ -1,4 +1,16 @@
 {
+    "antishov/doctrine-extensions-bundle": {
+        "version": "1.4",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "1.4",
+            "ref": "6c1ceb662f8997085f739cd089bfbef67f245983"
+        },
+        "files": [
+            "config/packages/stof_doctrine_extensions.yaml"
+        ]
+    },
     "behat/transliterator": {
         "version": "v1.2.0"
     },
@@ -87,16 +99,16 @@
         "version": "v2.4.36"
     },
     "imagine/imagine": {
-        "version": "v0.7.1"
+        "version": "1.2.3"
     },
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
     },
     "knplabs/knp-components": {
-        "version": "v1.3.10"
+        "version": "v2.3.2"
     },
     "knplabs/knp-paginator-bundle": {
-        "version": "v2.8.0"
+        "version": "v5.1.1"
     },
     "liip/imagine-bundle": {
         "version": "1.8",
@@ -104,8 +116,12 @@
             "repo": "github.com/symfony/recipes-contrib",
             "branch": "master",
             "version": "1.8",
-            "ref": "523b4b0cfb88dc8637cb56e427e6be7718bdce32"
-        }
+            "ref": "1d42bc3f713130582e6e0c475c49bc327ab0a2a2"
+        },
+        "files": [
+            "config/packages/liip_imagine.yaml",
+            "config/routes/liip_imagine.yaml"
+        ]
     },
     "markbaker/complex": {
         "version": "1.4.6"
@@ -438,7 +454,7 @@
         }
     },
     "symfony/templating": {
-        "version": "v4.1.7"
+        "version": "v5.0.4"
     },
     "symfony/translation": {
         "version": "3.3",
